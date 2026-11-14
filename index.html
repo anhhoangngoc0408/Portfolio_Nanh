@@ -245,7 +245,7 @@ function form(title,fields,v,done){
 const IF0=type=>type==='skills'?[{k:'title',l:'Skill group name'},{k:'desc',l:'Skills (comma-separated)',t:'area'}]:
  [...(type==='projects'?[{k:'cat',l:'Category (e.g. Business Analyst, Website Development…)'}]:[]),{k:'title',l:'Title'},{k:'sub',l:type==='experience'?'Company · period':'Subtitle (year, organisation…)'},{k:'brief',l:'Brief description (shown on the card)'},{k:'desc',l:'Detailed description, in English (supports **bold**, *italic*, and lines starting with “- ”)',t:'area',md:1},
  ...(['projects','experience'].includes(type)?[{k:'github',l:'GitHub'},{k:'website',l:'Website'},{k:'drive',l:'Google Drive'},{k:'other',l:'Other link'}]:[]),{k:'imgs',l:'Photos (add several; they play as a slideshow in the detail view)',t:'imgs'}];
-const ICONS=['🌸','🌷','🌼','🌻','🍓','🍜','🍰','🍣','💻','🎧','⌨️','📱','🎱','🚀','⭐','✨','🔥','💡','🎯','📊','🧪','🐞','📷','📸','🤖','🧠','📈','⚙️'];
+const ICONS=['🌸','🌷','🌻','🍉','🍜','🍰','🌭','💻','🎧','⌨️','🎱','⭐','🔥','💡','🦁','🏸','📸','🤖','📈','💵'];
 const IF=t=>[...IF0(t),{k:'icon',l:'Floating icon (optional)',t:'icon'}];
 function ICONPICK(f,v){return `<label>${f.l}</label><div class="sws">${['',...ICONS].map(i=>`<button type="button" class="sw${(v.icon||'')===i?' on':''}" data-ic="${i}">${i?`<span style="font-size:24px">${i}</span>`:'None'}</button>`).join('')}</div>`}
 document.addEventListener('click',e=>{
