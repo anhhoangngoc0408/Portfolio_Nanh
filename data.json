@@ -45,11 +45,28 @@
       "title": "Experience",
       "items": [
         {
-          "title": "Business Analyst",
-          "sub": "ABC Company · 2023 – Present",
-          "brief": "Analysed and documented a sales management system.",
-          "desc": "Analysed requirements and wrote documentation for a **sales management system**.\n- Worked with 3 dev and QA teams\n- *Cut requirement sign-off time by 30%*",
-          "imgs": []
+          "title": "Software Developer Intern",
+          "sub": "NAB Innovation Centre · July 2026 – Oct 2026",
+          "brief": "Developed internal Platforms with React/Java.",
+          "desc": "- Collaborated in an* Agile team* to develop a *banking-domain* web application.\n- Worked with the Product Owner to define **user stories, acceptance criteria**, and end-to-end **user journeys** for a banking application.\n- *Translated business rules *into JSON-based decision-tree navigation and integrated **React/Redux** components with** REST APIs.**",
+          "imgs": [
+            "images/mwg7fo9rdin5.jpg",
+            "images/mwg7gjlt3n4r.jpg",
+            "images/mwg7h2b6ivuv.jpg",
+            "images/mwg7hvv7ihyi.jpg"
+          ],
+          "caps": [
+            "Me with my lucky nail",
+            "",
+            "My favourite lunch friends :3",
+            ""
+          ],
+          "link": "",
+          "github": "",
+          "website": "",
+          "drive": "",
+          "other": "",
+          "icon": "🌻"
         }
       ]
     },
