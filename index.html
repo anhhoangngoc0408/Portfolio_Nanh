@@ -46,8 +46,8 @@ h1 em{font-style:italic;font-weight:400;background:linear-gradient(90deg,var(--a
 .btn.p{background:var(--a);color:var(--on);box-shadow:0 10px 26px -10px var(--a)}
 .btn.g{background:var(--card);color:var(--ink);border:1px solid var(--line)}
 .btn.sm{padding:8px 15px;font-size:13px}.btn.d{color:#e0475f}
-.mq{display:flex;overflow:hidden;white-space:nowrap;border-block:1px solid var(--line);margin:5vh 0 2vh;padding:14px 0;font:italic 300 clamp(20px,3vw,30px) var(--serif);color:var(--mute)}
-.mq div{animation:mq var(--mq,30s) linear infinite;padding-right:26px}.mq b{color:var(--a);font-style:normal;margin:0 18px}
+.mq{display:flex;overflow:hidden;white-space:nowrap;border-block:1px solid var(--line);margin:4vh 0 1vh;padding:8px 0;font:italic 300 clamp(15px,2.1vw,21px) var(--serif);color:var(--mute)}
+.mq div{animation:mq var(--mq,30s) linear infinite;padding-right:20px}.mq b{color:var(--a);font-style:normal;margin:0 13px;font-size:.7em}
 @keyframes mq{to{transform:translateX(-100%)}}
 section{padding:6vh 0}
 h2{font:300 clamp(32px,5vw,52px)/1.05 var(--serif);letter-spacing:-.02em;margin:0 0 30px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
@@ -102,15 +102,15 @@ textarea{min-height:140px;resize:vertical}
 .row{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;flex-wrap:wrap}
 .th{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}.th div{width:72px;height:72px;border-radius:12px;background:center/cover;position:relative}
 .th button{position:absolute;top:-6px;right:-6px;border:0;border-radius:50%;width:22px;height:22px;background:var(--a);color:var(--on);cursor:pointer}
-.car{position:relative;overflow:hidden;border-radius:16px;background:#000;margin-bottom:12px;touch-action:pan-y}
+.car{position:relative;overflow:hidden;border-radius:12px;background:#000;touch-action:pan-y}
 .trk{display:flex;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
 .trk figure{flex:0 0 100%;min-width:0;margin:0;display:flex;flex-direction:column;justify-content:center}
-.trk img{width:100%;height:auto;max-height:min(62vh,560px);aspect-ratio:auto 16/10;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
-.trk figcaption{padding:10px 18px 12px;background:#000;color:#fff;font-size:14px;line-height:1.45;text-align:center}
-.car.hc .dots{position:static;padding:2px 0 12px;background:#000}.car.hc .nv{top:40%}
+.trk img{width:100%;height:auto;max-height:min(32vh,230px);aspect-ratio:auto 16/10;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
+.trk figcaption{padding:8px 16px 10px;background:transparent;color:var(--fc,#fff);font-size:14px;line-height:1.45;text-align:center}
+.car.hc .dots{position:static;padding:2px 0 10px}.car.hc .nv{top:40%}
 .nv{position:absolute;top:50%;translate:0 -50%;width:40px;height:40px;border-radius:50%;border:0;background:#0009;color:#fff;font-size:22px;cursor:pointer}.pv{left:10px}.nx{right:10px}
 .dots{position:absolute;left:0;right:0;bottom:10px;display:flex;gap:6px;justify-content:center}
-.dots b{width:8px;height:8px;border-radius:50%;background:#fff6;cursor:pointer}.dots b.on{background:#fff;width:22px;border-radius:9px}
+.dots b{width:8px;height:8px;border-radius:50%;background:var(--dt,#fff6);cursor:pointer}.dots b.on{background:var(--dn,#fff);width:22px;border-radius:9px}
 .lk{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .toast{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-size:14px;z-index:99}
 .t-sunset,.t-cyber,.t-aurora,.t-midnight{--cfg:#fff;--cm:#ffffffd0;--cl:#ffffff30;--ca:#fff;--chip:#ffffff30}
@@ -130,6 +130,29 @@ section.dragging{opacity:.35}section.drop-before{box-shadow:0 -5px 0 -1px var(--
 .il{display:grid;gap:8px;margin-bottom:8px}.ir{display:flex;gap:8px;align-items:center}.ir .tn{flex:0 0 56px;height:56px;border-radius:10px;background:center/cover;border:1px solid var(--line)}.ir input{flex:1;min-width:0;padding:9px 11px}.ir .btn{flex:0 0 auto}
 .rt{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.cp{position:relative;overflow:hidden;margin:12px auto;background:#000;border-radius:12px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}.cp img{pointer-events:none;user-select:none}
 input[type=range]{padding:0}
+.fbr{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.fbr .sw{padding:4px}.fbr .sw i{width:30px;height:30px}
+/* detail: framed blocks */
+.fr{--chip:color-mix(in srgb,var(--a) 14%,transparent);border:1px solid var(--line);background:var(--card);border-radius:16px;padding:14px 16px;margin-top:14px}
+.fr .car{max-width:460px}
+.fl{font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--a);margin-bottom:8px}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}.fg .chip{margin:0 6px 6px 0}
+/* chips */
+button.chip{border:0;color:inherit;font-family:var(--sans);cursor:pointer;transition:background .2s,color .2s}
+button.chip:hover,.chip.on{background:var(--a);color:var(--on)}
+.chip.rl{background:transparent;border:1px solid var(--cl,var(--line))}
+.tg{margin:0 0 6px}.tg .chip{padding:2px 10px;font-size:12px;margin:0 5px 5px 0}
+/* compact skills */
+.skl{--chip:color-mix(in srgb,var(--a) 14%,transparent);border-top:1px solid var(--line)}
+.skr{position:relative;display:grid;grid-template-columns:200px 1fr;gap:6px 22px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line)}
+.skn{font:500 19px var(--serif)}.ski{margin-right:8px;font-size:18px}
+.skc{display:flex;flex-wrap:wrap;gap:6px}.skc .chip{margin:0;padding:4px 12px;font-size:13px}
+.ed .skr .tools{position:static;grid-column:1/-1;justify-content:flex-end}
+@media(max-width:600px){.skr{grid-template-columns:1fr;gap:6px}}
+/* project filter */
+.fbar{--chip:color-mix(in srgb,var(--a) 12%,transparent);display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 4px}.fbar .chip{margin:0;padding:4px 12px;font-size:13px}
+.fbar .fl2{font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-right:6px}
+.none{color:var(--mute);font-size:15px}
+.thm{border:1px solid var(--line);background:var(--card);color:var(--ink);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1;padding:0}.thm:hover{border-color:var(--a)}
 </style>
 </head>
 <body>
@@ -158,6 +181,24 @@ const sws=cur=>TH.map(([k,n,bg])=>`<button type="button" class="sw${k===cur?' on
 const pos={};
 let canEdit=false,edit=false,api=null,assets=null;
 const PEND=Object.create(null);
+const tags=v=>String(v||'').split(',').map(t=>t.trim()).filter(Boolean);
+let fskill=null;const mt=x=>!fskill||tags(x.skills).some(t=>t.toLowerCase()===fskill);
+const curTheme=()=>document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+try{const t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}
+const thmBtn=()=>`<button type="button" class="thm" data-thm aria-label="Light / dark" title="Light / dark">${curTheme()==='dark'?'☀':'☾'}</button>`;
+function fbar(s){const m=new Map();s.items.forEach(x=>tags(x.skills).forEach(t=>{if(!m.has(t.toLowerCase()))m.set(t.toLowerCase(),t)}));if(!m.size)return'';
+ return `<div class="fbar rv"><span class="fl2">Filter by skill</span><button type="button" class="chip${fskill?'':' on'}" data-flt="">All</button>${[...m].map(([k,t])=>`<button type="button" class="chip${fskill===k?' on':''}" data-flt="${esc(k)}">${esc(t)}</button>`).join('')}</div>`}
+const noneMsg=s=>fskill&&!s.items.some(mt)?`<p class="none">No projects tagged “${esc(fskill)}” yet. <button type="button" class="btn g sm" data-flt="">Show all</button></p>`:'';
+const showAll=()=>document.querySelectorAll('#app .rv').forEach(e=>e.classList.add('in'));
+document.addEventListener('click',e=>{
+ const th=e.target.closest('[data-thm]');
+ if(th){const t=curTheme()==='dark'?'light':'dark';document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(_){}document.querySelectorAll('[data-thm]').forEach(b=>b.textContent=t==='dark'?'☀':'☾');return}
+ const fb=e.target.closest('[data-flt]');
+ if(fb){const v=fb.dataset.flt;fskill=(!v||fskill===v)?null:v;render();showAll();return}
+ const sk=e.target.closest('[data-skill]');
+ if(sk){const v=sk.dataset.skill.toLowerCase();fskill=fskill===v?null:v;if(dlg.open)dlg.close();render();showAll();
+  const i=S.sections.findIndex(z=>z.type==='projects'),el=fskill&&i>=0&&document.getElementById('s'+i);if(el)el.scrollIntoView({behavior:'smooth'})}
+});
 const esc=s=>(s=String(s??''),PEND[s]||s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<i>$1</i>').replace(/^- (.*)$/gm,'• $1').replace(/\n/g,'<br>');
 const safe=u=>/^(https?:\/\/|mailto:|\/_blob\/)/.test(u||'')?u:'';
@@ -177,15 +218,15 @@ function card(x,si,i,k=i){
  const n=(x.imgs||[]).length;const ic=x.icon?`<span class="ci" style="--dl:${(k*.9)%3}s">${esc(x.icon)}</span>`:'';
  const cv=n?`<div class="cv" style="background-image:url(${esc(x.imgs[0])})"></div>${n>1?`<span class="cnt">▣ ${n}</span>`:''}`:`<div class="cv ph">${String(i+1).padStart(2,'0')}</div>`;
  const br=x.brief||(x.desc||'').replace(/[*\n-]+/g,' ').trim().slice(0,120);
- const lu=lk(x);
- return `<article class="card rv ${tcls(S.sections[si],k,x)}" ${cst(x,S.sections[si])} data-act="${lu?'go':'open'}" data-s="${si}" data-i="${i}"><div class="cvw">${cv}${ic}${lu?'<span class="go">↗ Visit</span>':''}</div>${tl(si,i)}<div class="bd"><div class="meta">${esc(x.sub)}</div><h3>${esc(x.title)}</h3><p>${esc(br)}</p><span class="more"${lu?` data-act="open" data-s="${si}" data-i="${i}"`:''}>View details →</span></div></article>`;
+ const lu=lk(x),al=[...tags(x.roles).map(t=>[t,1]),...tags(x.skills).map(t=>[t,0])],sh=al.slice(0,4),tg=al.length?`<div class="tg">${sh.map(([t,r])=>`<span class="chip${r?' rl':''}">${esc(t)}</span>`).join('')}${al.length>4?`<span class="chip">+${al.length-4}</span>`:''}</div>`:'';
+ return `<article class="card rv ${tcls(S.sections[si],k,x)}" ${cst(x,S.sections[si])} data-act="${lu?'go':'open'}" data-s="${si}" data-i="${i}"><div class="cvw">${cv}${ic}${lu?'<span class="go">↗ Visit</span>':''}</div>${tl(si,i)}<div class="bd"><div class="meta">${esc(x.sub)}</div><h3>${esc(x.title)}</h3><p>${esc(br)}</p>${tg}<span class="more"${lu?` data-act="open" data-s="${si}" data-i="${i}"`:''}>View details →</span></div></article>`;
 }
 function sec(s,si){
- const add=edit?`<span class="adm"><button class="btn g sm" data-act="up" data-s="${si}" title="Move up">↑</button><button class="btn g sm" data-act="down" data-s="${si}" title="Move down">↓</button><button class="btn g sm" data-act="add" data-s="${si}">＋ Add</button><button class="btn g sm" data-act="style" data-s="${si}">🎨 Card colour</button>${s.type==='projects'?`<button class="btn g sm" data-act="addcat" data-s="${si}">＋ Category</button>`:''}<button class="btn g sm d" data-act="delsec" data-s="${si}">Delete section</button></span>`:'';
+ const add=edit?`<span class="adm"><button class="btn g sm" data-act="up" data-s="${si}" title="Move up">↑</button><button class="btn g sm" data-act="down" data-s="${si}" title="Move down">↓</button><button class="btn g sm" data-act="add" data-s="${si}">＋ Add</button>${s.type!=='skills'?`<button class="btn g sm" data-act="style" data-s="${si}">🎨 Card colour</button>`:''}${s.type==='projects'?`<button class="btn g sm" data-act="addcat" data-s="${si}">＋ Category</button>`:''}<button class="btn g sm d" data-act="delsec" data-s="${si}">Delete section</button></span>`:'';
  let b='';
- if(s.type==='skills')b=`<div class="skills">${s.items.map((x,i)=>`<div class="sk rv ${tcls(s,i,x)}" ${cst(x,s)}>${tl(si,i)}${x.icon?`<span class="ci" style="--dl:${(i*.9)%3}s">${esc(x.icon)}</span>`:''}<h4>${esc(x.title)}</h4>${(x.desc||'').split(',').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div>`).join('')}</div>`;
+ if(s.type==='skills')b=`<div class="skl">${s.items.map((x,i)=>`<div class="skr rv">${edit?`<div class="tools"><button data-act="edit" data-s="${si}" data-i="${i}">Edit</button><button class="d" data-act="del" data-s="${si}" data-i="${i}">Delete</button></div>`:''}<div class="skn">${x.icon?`<span class="ski">${esc(x.icon)}</span>`:''}${esc(x.title)}</div><div class="skc">${tags(x.desc).map(t=>`<button type="button" class="chip${fskill===t.toLowerCase()?' on':''}" data-skill="${esc(t)}">${esc(t)}</button>`).join('')}</div></div>`).join('')}</div>`;
  else if(s.type==='experience')b=`<div class="tlw">${s.items.map((x,i)=>card(x,si,i)).join('')}</div>`;
- else if(s.type==='projects')b=cats(s).filter(c=>edit||s.items.some(x=>(x.cat||'Other')===c)).map(c=>`<div class="cat"><span>${esc(c)}</span>${edit?`<span class="adm"><button class="btn g sm" data-act="catadd" data-s="${si}" data-c="${esc(c)}">＋</button><button class="btn g sm" data-act="catren" data-s="${si}" data-c="${esc(c)}">Rename</button><button class="btn g sm d" data-act="catdel" data-s="${si}" data-c="${esc(c)}">Delete</button></span>`:''}</div><div class="grid">${s.items.map((x,i)=>[x,i]).filter(([x])=>(x.cat||'Other')===c).map(([x,i],k)=>card(x,si,i,k)).join('')}</div>`).join('');
+ else if(s.type==='projects')b=fbar(s)+noneMsg(s)+cats(s).filter(c=>edit||s.items.some(x=>(x.cat||'Other')===c&&mt(x))).map(c=>`<div class="cat"><span>${esc(c)}</span>${edit?`<span class="adm"><button class="btn g sm" data-act="catadd" data-s="${si}" data-c="${esc(c)}">＋</button><button class="btn g sm" data-act="catren" data-s="${si}" data-c="${esc(c)}">Rename</button><button class="btn g sm d" data-act="catdel" data-s="${si}" data-c="${esc(c)}">Delete</button></span>`:''}</div><div class="grid">${s.items.map((x,i)=>[x,i]).filter(([x])=>(x.cat||'Other')===c&&(edit||mt(x))).map(([x,i],k)=>card(x,si,i,k)).join('')}</div>`).join('');
  else b=`<div class="grid">${s.items.map((x,i)=>card(x,si,i)).join('')}</div>`;
  return `<section id="s${si}" data-si="${si}"><h2 class="rv">${edit?`<span class="grip" draggable="true" data-grip="${si}" title="Drag to move this section">⠿</span>`:''}<span${edit?` contenteditable data-st="${si}"`:''}>${esc(s.title)}</span><b>${String(s.items.length).padStart(2,'0')}</b>${add}</h2>${b}</section>`;
 }
@@ -194,7 +235,7 @@ function render(){
  const pi=S.sections.findIndex(s=>s.type==='projects'),ph=(p.phone||'').trim(),loc=p.location!=null?p.location:'Ho Chi Minh City',crow=(ph||edit?`<a${ph?` href="tel:${esc(ph.replace(/[^+\d]/g,''))}"`:' class="st"'}><span>Phone</span><span${ed('phone')} data-ph="Add phone number">${esc(ph)}</span></a>`:'')+(loc||edit?`<a class="st"><span>Location</span><span${ed('location')} data-ph="City">${esc(loc)}</span></a>`:'');
  const decor=DC.map((d,k)=>{const nm=d.nm?' nm':'';return d.c==='cue'?`<i class="dc cue${nm}" data-k="${k}" style="--dl:${d.dl}s"></i>`:d.c==='ball'?`<i class="dc ball${nm}" data-k="${k}" data-n="${d.n}" style="--s:${d.s}px;--c:${d.col};--dl:${d.dl}s"></i>`:`<span class="dc${nm}" data-k="${k}" style="--s:${d.s}px;--dl:${d.dl}s">${d.e}</span>`}).join('');
  $('#app').className=edit?'ed':'';
- $('#app').innerHTML=`<div class="wrap"><nav><b>${esc(p.name)}<i>.</i></b><div>${S.sections.map((s,i)=>`<a href="#s${i}">${esc(s.title)}</a>`).join('')}<a href="#contact">Contact</a></div></nav>
+ $('#app').innerHTML=`<div class="wrap"><nav><b>${esc(p.name)}<i>.</i></b><div>${S.sections.map((s,i)=>`<a href="#s${i}">${esc(s.title)}</a>`).join('')}<a href="#contact">Contact</a></div>${thmBtn()}</nav>
  <div class="hero"><div class="stage"><div class="ring"><div class="frame">${p.photo?`<img src="${esc(p.photo)}" alt="${esc(p.name)}">`:`<span>${esc(p.name.slice(0,1))}</span>`}${edit?`<label class="chg">📷 ${p.photo?'Change':'Upload'} photo<input type="file" id="phf" accept="image/*" hidden></label>`:''}</div></div></div>
  <span class="eyebrow"${ed('role')}>${esc(p.role)}</span>
  <h1>Hi, I'm <em${ed('name')}>${esc(p.name)}</em></h1>
@@ -216,10 +257,10 @@ function reveal(){
  const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.setProperty('--rd',Math.min([...e.target.parentNode.children].indexOf(e.target),6)*.07+'s');e.target.classList.add('in');o.unobserve(e.target)}}),{threshold:.1});
  els.forEach(e=>o.observe(e));
 }
-function car(im,cp=[]){
+function car(im,cp=[],fb){
  if(!im.length)return'';
- const hc=im.some((_,i)=>cp[i]);
- return `<div class="car${hc?' hc':''}" data-n="${im.length}"><div class="trk">${im.map((u,i)=>`<figure><img src="${esc(u)}" alt="${esc(cp[i]||'')}" draggable="false">${cp[i]?`<figcaption>${esc(cp[i])}</figcaption>`:''}</figure>`).join('')}</div>${im.length>1?`<button class="nv pv" data-nav="-1">‹</button><button class="nv nx" data-nav="1">›</button><div class="dots">${im.map((_,i)=>`<b data-go="${i}"></b>`).join('')}</div>`:''}</div>`;
+ const hc=im.some((_,i)=>cp[i]),f=HX.test(fb||'')?fb:'#000000',lt=lum(f)>.45,st=`background:${f};--fc:${lt?'#16181d':'#fff'};--dt:${lt?'#0003':'#fff6'};--dn:${lt?'#16181d':'#fff'}`;
+ return `<div class="car${hc?' hc':''}" style="${st}" data-n="${im.length}"><div class="trk">${im.map((u,i)=>`<figure><img src="${esc(u)}" alt="${esc(cp[i]||'')}" draggable="false">${cp[i]?`<figcaption>${esc(cp[i])}</figcaption>`:''}</figure>`).join('')}</div>${im.length>1?`<button class="nv pv" data-nav="-1">‹</button><button class="nv nx" data-nav="1">›</button><div class="dots">${im.map((_,i)=>`<b data-go="${i}"></b>`).join('')}</div>`:''}</div>`;
 }
 function wire(c){
  let k=0,x0=null;const n=+c.dataset.n,t=$('.trk',c),ds=[...c.querySelectorAll('.dots b')];
@@ -230,9 +271,13 @@ function wire(c){
  dlg.onkeydown=e=>{if(e.key==='ArrowRight')go(k+1);if(e.key==='ArrowLeft')go(k-1)};
 }
 function detail(si,i){
- const x=S.sections[si].items[i],L=[['github','GitHub'],['website','Website'],['drive','Google Drive'],['other','Other link']].filter(([k])=>safe(x[k]));
- show(`${car(x.imgs||[],x.caps||[])}<div class="meta">${esc(x.cat?x.cat+' · ':'')}${esc(x.sub)}</div><h3>${esc(x.title)}</h3><div class="dd">${md(x.desc||x.brief)}</div><div class="lk">${lk(x)?`<a class="btn p sm" href="${esc(lk(x))}" target="_blank" rel="noopener">Visit ↗</a>`:''}${L.map(([k,n])=>`<a class="btn p sm" href="${esc(x[k])}" target="_blank" rel="noopener">${n} ↗</a>`).join('')}</div><div class="row"><button class="btn g sm" id="x">Close</button></div>`);
- $('#x',dlg).onclick=()=>dlg.close();dlg.dataset.bd=1;const c=$('.car',dlg);if(c)wire(c);
+ const x=S.sections[si].items[i],ls=[['github','GitHub'],['website','Website'],['drive','Google Drive'],['other','Other link']].filter(([k])=>safe(x[k])),rl=tags(x.roles),sk=tags(x.skills),im=x.imgs||[],tx=x.desc||x.brief,lu=lk(x);
+ show(`<div class="meta">${esc(x.cat?x.cat+' · ':'')}${esc(x.sub)}</div><h3>${esc(x.title)}</h3>`
+  +(rl.length||sk.length?`<div class="fr fg">${rl.length?`<div><div class="fl">Role</div>${rl.map(t=>`<span class="chip rl">${esc(t)}</span>`).join('')}</div>`:''}${sk.length?`<div><div class="fl">Skills</div>${sk.map(t=>`<button type="button" class="chip" data-skill="${esc(t)}" title="Show projects using ${esc(t)}">${esc(t)}</button>`).join('')}</div>`:''}</div>`:'')
+  +(tx?`<div class="fr"><div class="fl">Overview</div><div class="dd">${md(tx)}</div></div>`:'')
+  +(lu||ls.length?`<div class="lk">${lu?`<a class="btn p sm" href="${esc(lu)}" target="_blank" rel="noopener">Visit ↗</a>`:''}${ls.map(([k,n])=>`<a class="btn p sm" href="${esc(x[k])}" target="_blank" rel="noopener">${n} ↗</a>`).join('')}</div>`:'')
+  +(im.length?`<div class="fr"><div class="fl">Gallery · ${im.length}</div>${car(im,x.caps||[],x.fbg)}</div>`:''));
+ dlg.dataset.bd=1;const c=$('.car',dlg);if(c)wire(c);
 }
 async function shrink(f,m=1600){
  if(/svg|gif/.test(f.type))return f;
@@ -281,8 +326,9 @@ function form(title,fields,v,done){
  v={...v,imgs:[...(v.imgs||[])],caps:[...(v.caps||[])]};
  const sync=()=>{dlg.querySelectorAll('[data-k]').forEach(e=>v[e.dataset.k]=e.value);dlg.querySelectorAll('[data-cap]').forEach(e=>v.caps[+e.dataset.cap]=e.value)};
  const paint=()=>{
-  show(`<h3>${title}</h3>`+fields.map(f=>f.t==='icon'?ICONPICK(f,v):f.t==='imgs'?`<label>${f.l}</label><div class="il">${v.imgs.map((u,i)=>`<div class="ir"><div class="tn" style="background-image:url(${esc(u)})"></div><input data-cap="${i}" placeholder="Caption (optional)" value="${esc(v.caps[i]||'')}">${assets?`<button type="button" class="btn g sm" data-crop="${i}">✂ Crop</button>`:''}<button type="button" class="btn g sm d" data-rm="${i}" title="Remove">✕</button></div>`).join('')}</div><input type="file" accept="image/*" multiple id="up" ${assets?'':'disabled'}>${assets?'':'<small>Uploads are only available to the page owner.</small>'}`:
-  `<label>${f.l}</label>${f.t==='area'?`${f.md?`<button class="btn g sm" data-w="**" type="button">B</button> <button class="btn g sm" data-w="*" type="button"><i>I</i></button>`:''}<textarea data-k="${f.k}">${esc(v[f.k])}</textarea>`:`<input data-k="${f.k}" value="${esc(v[f.k])}">`}`).join('')+`<div class="row"><button class="btn g sm" id="x">Close</button><button class="btn p sm" id="ok">Save</button></div>`);
+  show(`<h3>${title}</h3>`+fields.map(f=>f.t==='icon'?ICONPICK(f,v):f.t==='fbg'?FBPICK(f,v):f.t==='imgs'?`<label>${f.l}</label><div class="il">${v.imgs.map((u,i)=>`<div class="ir"><div class="tn" style="background-image:url(${esc(u)})"></div><input data-cap="${i}" placeholder="Caption (optional)" value="${esc(v.caps[i]||'')}">${assets?`<button type="button" class="btn g sm" data-crop="${i}">✂ Crop</button>`:''}<button type="button" class="btn g sm d" data-rm="${i}" title="Remove">✕</button></div>`).join('')}</div><input type="file" accept="image/*" multiple id="up" ${assets?'':'disabled'}>${assets?'':'<small>Uploads are only available to the page owner.</small>'}`:
+  `<label>${f.l}</label>${f.t==='area'?`${f.md?`<button class="btn g sm" data-w="**" type="button">B</button> <button class="btn g sm" data-w="*" type="button"><i>I</i></button>`:''}<textarea data-k="${f.k}">${esc(v[f.k])}</textarea>`:`<input data-k="${f.k}" value="${esc(v[f.k])}">`}`).join('')+`<div class="row"><button class="btn p sm" id="ok">Save</button></div>`);
+  dlg.querySelectorAll('[data-fb]').forEach(b=>b.onclick=()=>{$('[data-k="fbg"]',dlg).value=b.dataset.fb});
   dlg.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{sync();v.imgs.splice(+b.dataset.rm,1);v.caps.splice(+b.dataset.rm,1);paint()});
   dlg.querySelectorAll('[data-crop]').forEach(b=>b.onclick=async()=>{sync();const i=+b.dataset.crop,r=await crop(v.imgs[i]);if(r&&r!=='keep'){toast('Uploading…');try{v.imgs[i]=(await assets.upload(r)).url}catch(e){toast('Upload failed')}}paint()});
   dlg.querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>{const t=dlg.querySelector('textarea'),a=t.selectionStart,e=t.selectionEnd,w=b.dataset.w;t.setRangeText(w+t.value.slice(a,e)+w,a,e,'end');t.focus()});
@@ -291,16 +337,17 @@ function form(title,fields,v,done){
     if(!/svg|gif/.test(f.type)){const r=await crop(f);if(r===null)continue;b=r==='keep'?await shrink(f):r}
     toast('Uploading…');try{v.imgs.push((await assets.upload(b)).url);v.caps.push('')}catch(e){toast('One image failed to upload')}}
    paint()};
-  $('#x',dlg).onclick=()=>dlg.close();
   dlg.querySelectorAll('[data-ic]').forEach(b=>b.onclick=()=>{v.icon=b.dataset.ic;dlg.querySelectorAll('[data-ic]').forEach(q=>q.classList.toggle('on',q===b))});
-  $('#ok',dlg).onclick=()=>{sync();if(fields.some(f=>f.t==='imgs')){v.caps=v.imgs.map((_,i)=>(v.caps[i]||'').trim());if(!v.caps.some(Boolean))v.caps=undefined}else{delete v.imgs;delete v.caps}done(v);dlg.close();render()};
+  $('#ok',dlg).onclick=()=>{sync();if(fields.some(f=>f.t==='imgs')){v.caps=v.imgs.map((_,i)=>(v.caps[i]||'').trim());if(!v.caps.some(Boolean))v.caps=undefined;if(v.fbg==='#000000')v.fbg=undefined}else{delete v.imgs;delete v.caps}done(v);dlg.close();render()};
  };paint();
 }
 const IF0=type=>type==='skills'?[{k:'title',l:'Skill group name'},{k:'desc',l:'Skills (comma-separated)',t:'area'}]:
- [...(type==='projects'?[{k:'cat',l:'Category (e.g. Business Analyst, Website Development…)'}]:[]),{k:'title',l:'Title'},{k:'sub',l:type==='experience'?'Company · period':'Subtitle (year, organisation…)'},{k:'brief',l:'Brief description (shown on the card)'},{k:'link',l:'Priority link (optional): clicking the card opens this link directly, “View details →” opens the details'},{k:'desc',l:'Detailed description, in English (supports **bold**, *italic*, and lines starting with “- ”)',t:'area',md:1},
- ...(['projects','experience'].includes(type)?[{k:'github',l:'GitHub'},{k:'website',l:'Website'},{k:'drive',l:'Google Drive'},{k:'other',l:'Other link'}]:[]),{k:'imgs',l:'Photos (add several; slideshow in the detail view). Each photo can have a caption and be cropped',t:'imgs'}];
+ [...(type==='projects'?[{k:'cat',l:'Category (e.g. Business Analyst, Website Development…)'}]:[]),{k:'title',l:'Title'},{k:'sub',l:type==='experience'?'Company · period':'Subtitle (year, organisation…)'},{k:'brief',l:'Brief description (shown on the card)'},...(['projects','experience'].includes(type)?[{k:'roles',l:'Your role(s) here (comma-separated, e.g. Business Analyst, Tester)'},{k:'skills',l:'Skills / tools used (comma-separated; reuse the names from your Skills section so clicking a skill filters projects)'}]:[]),{k:'link',l:'Priority link (optional): clicking the card opens this link directly, “View details →” opens the details'},{k:'desc',l:'Detailed description, in English (supports **bold**, *italic*, and lines starting with “- ”)',t:'area',md:1},
+ ...(['projects','experience'].includes(type)?[{k:'github',l:'GitHub'},{k:'website',l:'Website'},{k:'drive',l:'Google Drive'},{k:'other',l:'Other link'}]:[]),{k:'imgs',l:'Photos (add several; slideshow in the detail view). Each photo can have a caption and be cropped',t:'imgs'},{k:'fbg',l:'Image frame colour (detail view)',t:'fbg'}];
 const ICONS=['🌸','🌷','🌻','🍉','🍜','🍰','🌭','💻','🎧','⌨️','🎱','⭐','🔥','💡','🦁','🏸','📸','🤖','📈','💵'];
 const IF=t=>[...IF0(t),{k:'icon',l:'Floating icon (optional)',t:'icon'}];
+const FBC=['#000000','#ffffff','#f1eee9','#16181d','#ffe3ea','#e6efff'];
+function FBPICK(f,v){const c=HX.test(v.fbg||'')?v.fbg:'#000000';return `<label>${f.l}</label><div class="fbr"><input type="color" data-k="fbg" value="${c}" style="width:64px;height:44px;padding:2px">${FBC.map(h=>`<button type="button" class="sw" data-fb="${h}" title="${h}"><i style="background:${h}"></i></button>`).join('')}</div>`}
 function ICONPICK(f,v){return `<label>${f.l}</label><div class="sws">${['',...ICONS].map(i=>`<button type="button" class="sw${(v.icon||'')===i?' on':''}" data-ic="${i}">${i?`<span style="font-size:24px">${i}</span>`:'None'}</button>`).join('')}</div>`}
 function colorDlg(o,{title,inherit}){
  const cur=okc(o)?'':(o.theme||(inherit?'inherit':'mix')),H=v=>HX.test(v||''),pk='style="width:64px;height:44px;padding:2px"';
@@ -316,7 +363,7 @@ function colorDlg(o,{title,inherit}){
 document.addEventListener('click',e=>{
  const b=e.target.closest('[data-act]');if(!b)return;
  const a=b.dataset.act,si=+b.dataset.s,i=+b.dataset.i,c=b.dataset.c,s=S.sections[si],x=s&&s.items[i];
- if(a==='on'){edit=true;render()}
+ if(a==='on'){edit=true;fskill=null;render()}
  if(a==='cancel'){const o=JSON.parse(orig);S.profile=o.profile;S.sections=o.sections;edit=false;render()}
  if(a==='add')form('Add new',IF(s.type),{},v=>s.items.push(v));
  if(a==='edit')form('Edit',IF(s.type),x,v=>Object.assign(x,v));
