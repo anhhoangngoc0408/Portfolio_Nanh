@@ -163,7 +163,7 @@ const dlg=$('#dlg');
 const show=h=>{dlg.onkeydown=null;dlg.innerHTML=h;if(!dlg.open)dlg.showModal()};
 const ask=(m,yes)=>{show(`<h3>${m}</h3><div class="row"><button class="btn g sm" id="x">Cancel</button><button class="btn p sm" id="ok">Delete</button></div>`);$('#x',dlg).onclick=()=>dlg.close();$('#ok',dlg).onclick=()=>{dlg.close();yes()}};
 const ed=f=>edit?` contenteditable data-f="${f}"`:'';
-const tl=(si,i)=>edit?`<div class="tools"><button data-act="color" data-s="${si}" data-i="${i}">Màu</button><button data-act="edit" data-s="${si}" data-i="${i}">Edit</button><button class="d" data-act="del" data-s="${si}" data-i="${i}">Delete</button></div>`:'';
+const tl=(si,i)=>edit?`<div class="tools"><button data-act="color" data-s="${si}" data-i="${i}">Theme</button><button data-act="edit" data-s="${si}" data-i="${i}">Edit</button><button class="d" data-act="del" data-s="${si}" data-i="${i}">Delete</button></div>`:'';
 
 function card(x,si,i,k=i){
  const n=(x.imgs||[]).length;const ic=x.icon?`<span class="ci" style="--dl:${(k*.9)%3}s">${esc(x.icon)}</span>`:'';
@@ -197,7 +197,7 @@ function render(){
  <div class="links rv"><a href="mailto:${esc(p.email)}"><span>Email</span><span${ed('email')}>${esc(p.email)}</span></a>${p.links.filter(l=>safe(l.url)).map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener"><span>${esc(l.label)}</span><span>↗</span></a>`).join('')}</div></div></section>
  <footer>© ${new Date().getFullYear()} ${esc(p.name)}</footer></div>
  <div class="dl" id="dl">${decor}</div>
- ${canEdit?`<div class="bar">${edit?`<button class="btn g sm" data-act="addsec">＋ Add section</button><button class="btn g sm" data-act="marq">Dòng chạy</button><button class="btn g sm" data-act="links">Links</button><button class="btn p sm" data-act="save">Save &amp; publish</button><button class="btn g sm" data-act="cancel">Cancel</button>`:`<button class="btn p" data-act="on">✎ Edit page</button><button class="btn g sm" data-act="logout">Thoát admin</button>`}</div>`:''}`;
+ ${canEdit?`<div class="bar">${edit?`<button class="btn g sm" data-act="addsec">＋ Add section</button><button class="btn g sm" data-act="marq">Marquee</button><button class="btn g sm" data-act="links">Links</button><button class="btn p sm" data-act="save">Save &amp; publish</button><button class="btn g sm" data-act="cancel">Cancel</button>`:`<button class="btn p" data-act="on">✎ Edit page</button><button class="btn g sm" data-act="logout">Thoát admin</button>`}</div>`:''}`;
  if(edit){const a=$('[data-f="about"]');if(a)a.textContent=p.about}
  place();reveal();
 }
@@ -263,7 +263,7 @@ document.addEventListener('click',e=>{
  if(a==='catren')form('Rename category',[{k:'n',l:'Category name'}],{n:c},v=>{const n=(v.n||'').trim();if(!n)return;s.cats=cats(s).map(z=>z===c?n:z);s.items.forEach(y=>{if((y.cat||'Other')===c)y.cat=n})});
  if(a==='catdel')ask(`Delete the category “${esc(c)}” and all its projects?`,()=>{s.cats=cats(s).filter(z=>z!==c);s.items=s.items.filter(y=>(y.cat||'Other')!==c);render()});
  if(a==='color'&&x){const cur=okc(x)?'':x.theme||'inherit';
-  show(`<h3>Màu card này</h3><div class="sws">${[['inherit','Theo section','var(--card)'],...TH.filter(t=>t[0]!=='mix')].map(([k,n,bg])=>`<button type="button" class="sw${k===cur?' on':''}" data-th="${k}"><i style="background:${bg}"></i>${n}</button>`).join('')}</div><label>Hoặc chọn màu bất kỳ</label><div class="row" style="justify-content:flex-start;gap:12px"><input type="color" id="cc" value="${okc(x)?x.bg:'#ffd6e0'}" style="width:64px;height:44px;padding:2px"><button class="btn p sm" id="cok">Dùng màu này</button></div><div class="row"><button class="btn g sm" id="x">Đóng</button></div>`);
+  show(`<h3>This card's color</h3><div class="sws">${[['inherit','Theo section','var(--card)'],...TH.filter(t=>t[0]!=='mix')].map(([k,n,bg])=>`<button type="button" class="sw${k===cur?' on':''}" data-th="${k}"><i style="background:${bg}"></i>${n}</button>`).join('')}</div><label>Or choose random color</label><div class="row" style="justify-content:flex-start;gap:12px"><input type="color" id="cc" value="${okc(x)?x.bg:'#ffd6e0'}" style="width:64px;height:44px;padding:2px"><button class="btn p sm" id="cok">Use this theme</button></div><div class="row"><button class="btn g sm" id="x">Đóng</button></div>`);
   $('#x',dlg).onclick=()=>dlg.close();
   dlg.querySelectorAll('[data-th]').forEach(z=>z.onclick=()=>{x.theme=z.dataset.th;delete x.bg;dlg.close();render()});
   $('#cok',dlg).onclick=()=>{x.bg=$('#cc',dlg).value;dlg.close();render()}}
@@ -273,7 +273,7 @@ document.addEventListener('click',e=>{
   dlg.querySelectorAll('[data-t]').forEach(z=>z.onclick=()=>{S.sections.push({id:z.dataset.t+Date.now(),type:z.dataset.t,title:TYPES[z.dataset.t],items:[],cats:[],theme:pick});dlg.close();render()});
   $('#x',dlg).onclick=()=>dlg.close()}
  if(a==='links')form('Links (shown in Contact)',[{k:'t',l:'One per line: Label | URL',t:'area'}],{t:S.profile.links.map(l=>l.label+' | '+l.url).join('\n')},v=>{S.profile.links=v.t.split('\n').map(z=>z.split('|').map(q=>q.trim())).filter(z=>z[0]&&z[1]).map(z=>({label:z[0],url:z[1]}))});
- if(a==='marq')form('Dòng chạy ở đầu trang',[{k:'t',l:'Mỗi dòng là một cụm chữ (để trống = ẩn dòng chạy)',t:'area'},{k:'sp',l:'Tốc độ: số giây chạy hết 1 vòng (5–120, càng nhỏ càng nhanh)'}],{t:(S.profile.marquee!=null?S.profile.marquee.split(/[·\n]/):S.profile.role.split('·').concat(['Flowers','Food','Billiards','Tech'])).map(x=>x.trim()).filter(Boolean).join('\n'),sp:S.profile.marqueeSpeed||30},v=>{S.profile.marquee=v.t.split('\n').map(x=>x.trim()).filter(Boolean).join(' · ');S.profile.marqueeSpeed=Math.max(5,Math.min(120,+v.sp||30))});
+ if(a==='marq')form('Top Marquee',[{k:'t',l:'One phrase per line (leave blank to hide)',t:'area'},{k:'sp',l:'Speed: seconds per loop (5–120, lower is faster)'}],{t:(S.profile.marquee!=null?S.profile.marquee.split(/[·\n]/):S.profile.role.split('·').concat(['Flowers','Food','Billiards','Tech'])).map(x=>x.trim()).filter(Boolean).join('\n'),sp:S.profile.marqueeSpeed||30},v=>{S.profile.marquee=v.t.split('\n').map(x=>x.trim()).filter(Boolean).join(' · ');S.profile.marqueeSpeed=Math.max(5,Math.min(120,+v.sp||30))});
  if(a==='logout'){localStorage.removeItem('gh_cfg');canEdit=false;edit=false;api=assets=null;render()}
  if(a==='save')save();
 });
