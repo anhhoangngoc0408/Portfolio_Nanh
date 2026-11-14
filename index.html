@@ -336,6 +336,7 @@ function ghLogin(){
  try{const r=await fetch('data.json',{cache:'no-cache'});if(r.ok){const d=await r.json();if(d&&d.profile&&Array.isArray(d.sections)){S.profile=d.profile;S.sections=d.sections;orig=JSON.stringify(d)}}}catch(e){}
  render();
  if(GH.cfg)enableAdmin();else if(location.hash==='#admin')ghLogin();
+ addEventListener('hashchange',()=>{if(location.hash==='#admin'&&!GH.cfg)ghLogin()});
 })();
 </script>
 </body>
