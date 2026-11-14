@@ -104,7 +104,10 @@ textarea{min-height:140px;resize:vertical}
 .th button{position:absolute;top:-6px;right:-6px;border:0;border-radius:50%;width:22px;height:22px;background:var(--a);color:var(--on);cursor:pointer}
 .car{position:relative;overflow:hidden;border-radius:16px;background:#000;margin-bottom:12px;touch-action:pan-y}
 .trk{display:flex;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
-.trk img{flex:0 0 100%;width:100%;aspect-ratio:16/10;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
+.trk figure{flex:0 0 100%;min-width:0;margin:0;display:flex;flex-direction:column;justify-content:center}
+.trk img{width:100%;height:auto;max-height:min(62vh,560px);aspect-ratio:auto 16/10;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
+.trk figcaption{padding:10px 18px 12px;background:#000;color:#fff;font-size:14px;line-height:1.45;text-align:center}
+.car.hc .dots{position:static;padding:2px 0 12px;background:#000}.car.hc .nv{top:40%}
 .nv{position:absolute;top:50%;translate:0 -50%;width:40px;height:40px;border-radius:50%;border:0;background:#0009;color:#fff;font-size:22px;cursor:pointer}.pv{left:10px}.nx{right:10px}
 .dots{position:absolute;left:0;right:0;bottom:10px;display:flex;gap:6px;justify-content:center}
 .dots b{width:8px;height:8px;border-radius:50%;background:#fff6;cursor:pointer}.dots b.on{background:#fff;width:22px;border-radius:9px}
@@ -123,6 +126,10 @@ section.dragging{opacity:.35}section.drop-before{box-shadow:0 -5px 0 -1px var(--
 .links a.st{cursor:default}.links a.st:hover{padding-left:0;color:var(--ink)}
 .cg{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.gpv{height:56px;border-radius:14px;border:1px solid var(--line);margin:12px 0}
 @media(max-width:720px){.dc{font-size:calc(var(--s)*.72)}.dc.ball{width:calc(var(--s)*.72);height:calc(var(--s)*.72)}.dc.nm{display:none}}
+.xx{position:sticky;top:8px;display:block;margin:-12px -12px -22px auto;width:34px;height:34px;padding:0;border:0;border-radius:50%;background:#000b;color:#fff;font:600 16px/34px var(--sans);text-align:center;cursor:pointer;z-index:20}.xx:hover{background:var(--a);color:var(--on)}
+.il{display:grid;gap:8px;margin-bottom:8px}.ir{display:flex;gap:8px;align-items:center}.ir .tn{flex:0 0 56px;height:56px;border-radius:10px;background:center/cover;border:1px solid var(--line)}.ir input{flex:1;min-width:0;padding:9px 11px}.ir .btn{flex:0 0 auto}
+.rt{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.cp{position:relative;overflow:hidden;margin:12px auto;background:#000;border-radius:12px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}.cp img{pointer-events:none;user-select:none}
+input[type=range]{padding:0}
 </style>
 </head>
 <body>
@@ -150,14 +157,18 @@ const lk=x=>{let u=((x&&x.link)||'').trim();if(!u)return'';if(!/^[a-z][a-z0-9+.-
 const sws=cur=>TH.map(([k,n,bg])=>`<button type="button" class="sw${k===cur?' on':''}" data-th="${k}"><i style="background:${bg}"></i>${n}</button>`).join('');
 const pos={};
 let canEdit=false,edit=false,api=null,assets=null;
-const PEND={};
+const PEND=Object.create(null);
 const esc=s=>(s=String(s??''),PEND[s]||s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<i>$1</i>').replace(/^- (.*)$/gm,'• $1').replace(/\n/g,'<br>');
 const safe=u=>/^(https?:\/\/|mailto:|\/_blob\/)/.test(u||'')?u:'';
-const toast=m=>{const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),2800)};
+const toast=(m,ms=2800)=>{document.querySelectorAll('.toast').forEach(n=>n.remove());const t=document.createElement('div');t.className='toast';t.textContent=m;(dlg.open?dlg:document.body).append(t);setTimeout(()=>t.remove(),ms)};
 const cats=s=>[...new Set([...(s.cats||[]),...s.items.map(x=>x.cat||'Other')])];
 const dlg=$('#dlg');
-const show=h=>{dlg.onkeydown=null;dlg.innerHTML=h;if(!dlg.open)dlg.showModal()};
+const show=h=>{dlg.onkeydown=null;delete dlg.dataset.bd;dlg.innerHTML='<button type="button" class="xx" aria-label="Close" title="Close">✕</button>'+h;if(!dlg.open)dlg.showModal()};
+dlg.addEventListener('click',e=>{
+ if(e.target.closest('.xx'))return dlg.close();
+ if(dlg.dataset.bd&&e.target===dlg){const r=dlg.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dlg.close()}
+});
 const ask=(m,yes)=>{show(`<h3>${m}</h3><div class="row"><button class="btn g sm" id="x">Cancel</button><button class="btn p sm" id="ok">Delete</button></div>`);$('#x',dlg).onclick=()=>dlg.close();$('#ok',dlg).onclick=()=>{dlg.close();yes()}};
 const ed=f=>edit?` contenteditable data-f="${f}"`:'';
 const tl=(si,i)=>edit?`<div class="tools"><button data-act="color" data-s="${si}" data-i="${i}">Theme</button><button data-act="edit" data-s="${si}" data-i="${i}">Edit</button><button class="d" data-act="del" data-s="${si}" data-i="${i}">Delete</button></div>`:'';
@@ -205,9 +216,10 @@ function reveal(){
  const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.setProperty('--rd',Math.min([...e.target.parentNode.children].indexOf(e.target),6)*.07+'s');e.target.classList.add('in');o.unobserve(e.target)}}),{threshold:.1});
  els.forEach(e=>o.observe(e));
 }
-function car(im){
+function car(im,cp=[]){
  if(!im.length)return'';
- return `<div class="car" data-n="${im.length}"><div class="trk">${im.map(u=>`<img src="${esc(u)}" alt="" draggable="false">`).join('')}</div>${im.length>1?`<button class="nv pv" data-nav="-1">‹</button><button class="nv nx" data-nav="1">›</button><div class="dots">${im.map((_,i)=>`<b data-go="${i}"></b>`).join('')}</div>`:''}</div>`;
+ const hc=im.some((_,i)=>cp[i]);
+ return `<div class="car${hc?' hc':''}" data-n="${im.length}"><div class="trk">${im.map((u,i)=>`<figure><img src="${esc(u)}" alt="${esc(cp[i]||'')}" draggable="false">${cp[i]?`<figcaption>${esc(cp[i])}</figcaption>`:''}</figure>`).join('')}</div>${im.length>1?`<button class="nv pv" data-nav="-1">‹</button><button class="nv nx" data-nav="1">›</button><div class="dots">${im.map((_,i)=>`<b data-go="${i}"></b>`).join('')}</div>`:''}</div>`;
 }
 function wire(c){
  let k=0,x0=null;const n=+c.dataset.n,t=$('.trk',c),ds=[...c.querySelectorAll('.dots b')];
@@ -219,30 +231,74 @@ function wire(c){
 }
 function detail(si,i){
  const x=S.sections[si].items[i],L=[['github','GitHub'],['website','Website'],['drive','Google Drive'],['other','Other link']].filter(([k])=>safe(x[k]));
- show(`${car(x.imgs||[])}<div class="meta">${esc(x.cat?x.cat+' · ':'')}${esc(x.sub)}</div><h3>${esc(x.title)}</h3><div class="dd">${md(x.desc||x.brief)}</div><div class="lk">${lk(x)?`<a class="btn p sm" href="${esc(lk(x))}" target="_blank" rel="noopener">Visit ↗</a>`:''}${L.map(([k,n])=>`<a class="btn p sm" href="${esc(x[k])}" target="_blank" rel="noopener">${n} ↗</a>`).join('')}</div><div class="row"><button class="btn g sm" id="x">Close</button></div>`);
- $('#x',dlg).onclick=()=>dlg.close();const c=$('.car',dlg);if(c)wire(c);
+ show(`${car(x.imgs||[],x.caps||[])}<div class="meta">${esc(x.cat?x.cat+' · ':'')}${esc(x.sub)}</div><h3>${esc(x.title)}</h3><div class="dd">${md(x.desc||x.brief)}</div><div class="lk">${lk(x)?`<a class="btn p sm" href="${esc(lk(x))}" target="_blank" rel="noopener">Visit ↗</a>`:''}${L.map(([k,n])=>`<a class="btn p sm" href="${esc(x[k])}" target="_blank" rel="noopener">${n} ↗</a>`).join('')}</div><div class="row"><button class="btn g sm" id="x">Close</button></div>`);
+ $('#x',dlg).onclick=()=>dlg.close();dlg.dataset.bd=1;const c=$('.car',dlg);if(c)wire(c);
 }
 async function shrink(f,m=1600){
  if(/svg|gif/.test(f.type))return f;
  try{const b=await createImageBitmap(f),r=Math.min(1,m/Math.max(b.width,b.height)),c=document.createElement('canvas');c.width=b.width*r;c.height=b.height*r;c.getContext('2d').drawImage(b,0,0,c.width,c.height);return await new Promise(res=>c.toBlob(res,'image/jpeg',.86))}catch(e){return f}
 }
+const RATIOS=[['1:1',1],['4:3',4/3],['3:4',3/4],['16:10',1.6],['16:9',16/9],['3:2',1.5],['2:3',2/3]];let lastR=1.6;
+/* resolves: Blob (cropped) | 'keep' (use original) | null (cancelled). Never closes the dialog itself. */
+function crop(src,{ratio=lastR,name='Crop image',max=1600}={}){
+ return new Promise(res=>{
+  const own=typeof src!=='string',url=own?URL.createObjectURL(src):(PEND[src]||src);let done=false;
+  const fin=v=>{if(done)return;done=true;dlg.removeEventListener('close',cl);if(own)URL.revokeObjectURL(url);res(v)};
+  const cl=()=>fin(null);
+  const im=new Image();
+  im.onerror=()=>{toast('Không mở được ảnh (ảnh mới tải lên thì đợi ~1 phút cho web cập nhật rồi thử lại)',4500);fin(null)};
+  im.onload=()=>{
+   const nw=im.naturalWidth,nh=im.naturalHeight;let r=ratio,z=1,ox=0,oy=0,W=0,H=0,base=1;
+   show(`<h3>${name}</h3><div class="rt">${RATIOS.map(([n,v])=>`<button type="button" class="btn sm" data-r="${v}">${n}</button>`).join('')}<button type="button" class="btn sm" data-r="orig">Original</button></div><div class="cp" id="cp"></div><label>Zoom · drag the photo to reposition</label><input type="range" id="cz" min="1" max="4" step="0.01" value="1"><div class="row"><button class="btn g sm" id="cs" type="button">Skip crop</button><button class="btn g sm" id="x" type="button">Cancel</button><button class="btn p sm" id="ok" type="button">Apply</button></div>`);
+   dlg.addEventListener('close',cl);
+   const cp=$('#cp',dlg),zs=$('#cz',dlg);cp.append(im);im.draggable=false;
+   const apply=()=>{const s=base*z,w=nw*s,h=nh*s;ox=Math.min(0,Math.max(W-w,ox));oy=Math.min(0,Math.max(H-h,oy));im.style.cssText=`position:absolute;max-width:none;left:${ox}px;top:${oy}px;width:${w}px;height:${h}px`};
+   const mark=()=>dlg.querySelectorAll('[data-r]').forEach(b=>{const v=b.dataset.r==='orig'?nw/nh:+b.dataset.r,on=Math.abs(v-r)<.001&&(b.dataset.r!=='orig'||!RATIOS.some(q=>Math.abs(q[1]-r)<.001));b.classList.toggle('p',on);b.classList.toggle('g',!on)});
+   const layout=()=>{const maxW=Math.min(dlg.clientWidth-52,560),maxH=innerHeight*.5;W=maxW;H=W/r;if(H>maxH){H=maxH;W=H*r}cp.style.width=W+'px';cp.style.height=H+'px';base=Math.max(W/nw,H/nh);z=1;zs.value=1;ox=(W-nw*base)/2;oy=(H-nh*base)/2;apply();mark()};
+   const setZ=z1=>{const s0=base*z,cx=(W/2-ox)/s0,cy=(H/2-oy)/s0;z=z1;const s1=base*z;ox=W/2-cx*s1;oy=H/2-cy*s1;apply()};
+   layout();
+   dlg.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{r=b.dataset.r==='orig'?nw/nh:+b.dataset.r;layout()});
+   let d=null;
+   cp.onpointerdown=e=>{d={x:e.clientX-ox,y:e.clientY-oy};cp.setPointerCapture(e.pointerId);cp.style.cursor='grabbing'};
+   cp.onpointermove=e=>{if(!d)return;ox=e.clientX-d.x;oy=e.clientY-d.y;apply()};
+   cp.onpointerup=cp.onpointercancel=()=>{d=null;cp.style.cursor=''};
+   cp.onwheel=e=>{e.preventDefault();const z1=Math.min(4,Math.max(1,z*(e.deltaY<0?1.08:1/1.08)));zs.value=z1;setZ(z1)};
+   zs.oninput=()=>setZ(+zs.value);
+   $('#x',dlg).onclick=()=>dlg.close();
+   $('#cs',dlg).onclick=()=>fin('keep');
+   $('#ok',dlg).onclick=()=>{
+    const s=base*z,sx=-ox/s,sy=-oy/s,sw=W/s,sh=H/s,k=Math.min(1,max/Math.max(sw,sh)),c=document.createElement('canvas');
+    c.width=Math.max(1,Math.round(sw*k));c.height=Math.max(1,Math.round(sh*k));
+    try{const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(im,sx,sy,sw,sh,0,0,c.width,c.height);
+     c.toBlob(b=>{if(b){lastR=r;fin(b)}else{toast('Cắt ảnh thất bại');fin(null)}},'image/jpeg',.9)}
+    catch(e){toast('Không cắt được ảnh này');fin(null)}
+   };
+  };
+  im.src=url;
+ })
+}
 function form(title,fields,v,done){
- v={...v,imgs:[...(v.imgs||[])]};
- const sync=()=>dlg.querySelectorAll('[data-k]').forEach(e=>v[e.dataset.k]=e.value);
+ v={...v,imgs:[...(v.imgs||[])],caps:[...(v.caps||[])]};
+ const sync=()=>{dlg.querySelectorAll('[data-k]').forEach(e=>v[e.dataset.k]=e.value);dlg.querySelectorAll('[data-cap]').forEach(e=>v.caps[+e.dataset.cap]=e.value)};
  const paint=()=>{
-  show(`<h3>${title}</h3>`+fields.map(f=>f.t==='icon'?ICONPICK(f,v):f.t==='imgs'?`<label>${f.l}</label><div class="th">${v.imgs.map((u,i)=>`<div style="background-image:url(${esc(u)})"><button data-rm="${i}">×</button></div>`).join('')}</div><input type="file" accept="image/*" multiple id="up" ${assets?'':'disabled'}>${assets?'':'<small>Uploads are only available to the page owner.</small>'}`:
+  show(`<h3>${title}</h3>`+fields.map(f=>f.t==='icon'?ICONPICK(f,v):f.t==='imgs'?`<label>${f.l}</label><div class="il">${v.imgs.map((u,i)=>`<div class="ir"><div class="tn" style="background-image:url(${esc(u)})"></div><input data-cap="${i}" placeholder="Caption (optional)" value="${esc(v.caps[i]||'')}">${assets?`<button type="button" class="btn g sm" data-crop="${i}">✂ Crop</button>`:''}<button type="button" class="btn g sm d" data-rm="${i}" title="Remove">✕</button></div>`).join('')}</div><input type="file" accept="image/*" multiple id="up" ${assets?'':'disabled'}>${assets?'':'<small>Uploads are only available to the page owner.</small>'}`:
   `<label>${f.l}</label>${f.t==='area'?`${f.md?`<button class="btn g sm" data-w="**" type="button">B</button> <button class="btn g sm" data-w="*" type="button"><i>I</i></button>`:''}<textarea data-k="${f.k}">${esc(v[f.k])}</textarea>`:`<input data-k="${f.k}" value="${esc(v[f.k])}">`}`).join('')+`<div class="row"><button class="btn g sm" id="x">Close</button><button class="btn p sm" id="ok">Save</button></div>`);
-  dlg.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{sync();v.imgs.splice(+b.dataset.rm,1);paint()});
+  dlg.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{sync();v.imgs.splice(+b.dataset.rm,1);v.caps.splice(+b.dataset.rm,1);paint()});
+  dlg.querySelectorAll('[data-crop]').forEach(b=>b.onclick=async()=>{sync();const i=+b.dataset.crop,r=await crop(v.imgs[i]);if(r&&r!=='keep'){toast('Uploading…');try{v.imgs[i]=(await assets.upload(r)).url}catch(e){toast('Upload failed')}}paint()});
   dlg.querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>{const t=dlg.querySelector('textarea'),a=t.selectionStart,e=t.selectionEnd,w=b.dataset.w;t.setRangeText(w+t.value.slice(a,e)+w,a,e,'end');t.focus()});
-  const up=$('#up',dlg);if(up)up.onchange=async()=>{sync();toast('Uploading…');for(const f of up.files){try{v.imgs.push((await assets.upload(await shrink(f))).url)}catch(e){toast('One image failed to upload')}}paint()};
+  const up=$('#up',dlg);if(up)up.onchange=async()=>{sync();const fl=[...up.files];
+   for(const f of fl){let b=f;
+    if(!/svg|gif/.test(f.type)){const r=await crop(f);if(r===null)continue;b=r==='keep'?await shrink(f):r}
+    toast('Uploading…');try{v.imgs.push((await assets.upload(b)).url);v.caps.push('')}catch(e){toast('One image failed to upload')}}
+   paint()};
   $('#x',dlg).onclick=()=>dlg.close();
   dlg.querySelectorAll('[data-ic]').forEach(b=>b.onclick=()=>{v.icon=b.dataset.ic;dlg.querySelectorAll('[data-ic]').forEach(q=>q.classList.toggle('on',q===b))});
-  $('#ok',dlg).onclick=()=>{sync();done(v);dlg.close();render()};
+  $('#ok',dlg).onclick=()=>{sync();if(fields.some(f=>f.t==='imgs')){v.caps=v.imgs.map((_,i)=>(v.caps[i]||'').trim());if(!v.caps.some(Boolean))v.caps=undefined}else{delete v.imgs;delete v.caps}done(v);dlg.close();render()};
  };paint();
 }
 const IF0=type=>type==='skills'?[{k:'title',l:'Skill group name'},{k:'desc',l:'Skills (comma-separated)',t:'area'}]:
  [...(type==='projects'?[{k:'cat',l:'Category (e.g. Business Analyst, Website Development…)'}]:[]),{k:'title',l:'Title'},{k:'sub',l:type==='experience'?'Company · period':'Subtitle (year, organisation…)'},{k:'brief',l:'Brief description (shown on the card)'},{k:'link',l:'Priority link (optional): clicking the card opens this link directly, “View details →” opens the details'},{k:'desc',l:'Detailed description, in English (supports **bold**, *italic*, and lines starting with “- ”)',t:'area',md:1},
- ...(['projects','experience'].includes(type)?[{k:'github',l:'GitHub'},{k:'website',l:'Website'},{k:'drive',l:'Google Drive'},{k:'other',l:'Other link'}]:[]),{k:'imgs',l:'Photos (add several; they play as a slideshow in the detail view)',t:'imgs'}];
+ ...(['projects','experience'].includes(type)?[{k:'github',l:'GitHub'},{k:'website',l:'Website'},{k:'drive',l:'Google Drive'},{k:'other',l:'Other link'}]:[]),{k:'imgs',l:'Photos (add several; slideshow in the detail view). Each photo can have a caption and be cropped',t:'imgs'}];
 const ICONS=['🌸','🌷','🌻','🍉','🍜','🍰','🌭','💻','🎧','⌨️','🎱','⭐','🔥','💡','🦁','🏸','📸','🤖','📈','💵'];
 const IF=t=>[...IF0(t),{k:'icon',l:'Floating icon (optional)',t:'icon'}];
 function ICONPICK(f,v){return `<label>${f.l}</label><div class="sws">${['',...ICONS].map(i=>`<button type="button" class="sw${(v.icon||'')===i?' on':''}" data-ic="${i}">${i?`<span style="font-size:24px">${i}</span>`:'None'}</button>`).join('')}</div>`}
@@ -289,14 +345,25 @@ document.addEventListener('input',e=>{if(!edit)return;const t=e.target,d=t.datas
 document.addEventListener('change',async e=>{
  if(e.target.id!=='phf')return;const f=e.target.files[0];if(!f)return;
  if(!assets)return toast('Uploads are only available to the page owner');
- toast('Uploading…');try{S.profile.photo=(await assets.upload(await shrink(f,1200))).url;render()}catch(_){toast('Upload failed, please try again')}
+ let b=f;
+ if(!/svg|gif/.test(f.type)){const r=await crop(f,{ratio:3/4,name:'Crop profile photo',max:1200});dlg.close();if(r===null)return;b=r==='keep'?await shrink(f,1200):r}
+ toast('Uploading…');try{S.profile.photo=(await assets.upload(b)).url;render()}catch(_){toast('Upload failed, please try again')}
 });
 async function save(){
  if(!api){toast('Chưa đăng nhập admin');return}
- toast('Đang lưu…');
- try{await api.publish(JSON.stringify(S,null,2)+'\n');orig=JSON.stringify(S);edit=false;render();toast('Đã lưu! Web cập nhật sau khoảng 1 phút')}
- catch(err){const c=err&&err.code;toast(c===401||c===403?'Token sai hoặc hết hạn, hãy đăng nhập lại':c==='conflict'?'Có bản mới hơn, hãy tải lại trang':'Lưu thất bại, thử lại nhé')}
+ const json=JSON.stringify(S,null,2)+'\n';
+ toast('Đang lưu lên GitHub…',60000);
+ try{await api.publish(json);orig=JSON.stringify(S);edit=false;render();toast('Đã lưu vào repo ✓ Đang chờ web công khai cập nhật (~1 phút)…',8000);watchLive(json)}
+ catch(err){const c=err&&err.code;toast(c===401||c===403?'Token sai hoặc hết hạn, hãy đăng nhập lại':c==='conflict'?'Có bản mới hơn, hãy tải lại trang':'Lưu thất bại ('+(c||(err&&err.message)||'lỗi mạng')+'), thử lại nhé',6000)}
 }
+/* poll the live site until it serves the saved data.json, so you know when GitHub Pages finished deploying */
+async function watchLive(json){
+ const want=json.trim();
+ for(let i=0;i<40;i++){await new Promise(r=>setTimeout(r,5000));
+  try{const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'});if(r.ok&&(await r.text()).trim()===want){toast('Đã online ✓ Web công khai đã cập nhật',5000);return}}catch(e){}}
+ toast('Chưa thấy web cập nhật sau ~3 phút. Vào repo > tab Actions xem Pages đã chạy chưa',8000)
+}
+addEventListener('beforeunload',e=>{if(edit&&JSON.stringify(S)!==orig){e.preventDefault();e.returnValue=''}});
 /* drag sections to reorder (desktop) */
 let dsec=null,dtg=null;const clrDrop=()=>document.querySelectorAll('.dragging,.drop-before,.drop-after').forEach(n=>n.classList.remove('dragging','drop-before','drop-after'));
 document.addEventListener('dragstart',e=>{const g=e.target.closest&&e.target.closest('[data-grip]');if(!g||!edit)return;dsec=+g.dataset.grip;dtg=null;if(e.dataTransfer){e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',String(dsec));e.dataTransfer.setDragImage&&e.dataTransfer.setDragImage(g.closest('h2'),20,20)}g.closest('section').classList.add('dragging')});
@@ -323,14 +390,17 @@ addEventListener('resize',place);new ResizeObserver(place).observe($('#app'));do
 const GH={get cfg(){try{return JSON.parse(localStorage.getItem('gh_cfg')||'null')}catch(e){return null}}};
 const b64t=t=>{let b='';new TextEncoder().encode(t).forEach(c=>b+=String.fromCharCode(c));return btoa(b)};
 const b64f=async f=>{const u=new Uint8Array(await f.arrayBuffer());let b='';for(let i=0;i<u.length;i+=32768)b+=String.fromCharCode.apply(null,u.subarray(i,i+32768));return btoa(b)};
-const ghq=(path,o={},c=GH.cfg)=>fetch(`https://api.github.com/repos/${c.owner}/${c.repo}${path?'/'+path:''}`,{...o,headers:{Accept:'application/vnd.github+json',Authorization:'Bearer '+c.token,...(o.headers||{})}});
+const ghq=(path,o={},c=GH.cfg)=>fetch(`https://api.github.com/repos/${c.owner}/${c.repo}${path?'/'+path:''}`,{cache:'no-store',...o,headers:{Accept:'application/vnd.github+json',Authorization:'Bearer '+c.token,...(o.headers||{})}});
 async function ghPut(file,content,msg){
- const c=GH.cfg;let sha;
- const g=await ghq(`contents/${file}?ref=${encodeURIComponent(c.branch)}`);
- if(g.ok)sha=(await g.json()).sha;else if(g.status!==404)throw{code:g.status};
- const r=await ghq(`contents/${file}`,{method:'PUT',body:JSON.stringify({message:msg,content,branch:c.branch,sha})});
- if(!r.ok)throw{code:r.status===409||r.status===422?'conflict':r.status};
- return r.json()
+ const c=GH.cfg;let last;
+ for(let t=0;t<2;t++){
+  let sha;const g=await ghq(`contents/${file}?ref=${encodeURIComponent(c.branch)}`);
+  if(g.ok)sha=(await g.json()).sha;else if(g.status!==404)throw{code:g.status};
+  const r=await ghq(`contents/${file}`,{method:'PUT',body:JSON.stringify({message:msg,content,branch:c.branch,sha})});
+  if(r.ok)return r.json();
+  last=r.status;if(r.status!==409&&r.status!==422)break
+ }
+ throw{code:last===409||last===422?'conflict':last}
 }
 async function enableAdmin(){
  canEdit=true;
@@ -356,7 +426,7 @@ function ghLogin(){
   }catch(e){toast('Không kết nối được GitHub: '+(e&&e.message||e))}}
 }
 (async()=>{
- try{const r=await fetch('data.json',{cache:'no-cache'});if(r.ok){const d=await r.json();if(d&&d.profile&&Array.isArray(d.sections)){S.profile=d.profile;S.sections=d.sections;orig=JSON.stringify(d)}}}catch(e){}
+ try{const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'});if(r.ok){const d=await r.json();if(d&&d.profile&&Array.isArray(d.sections)){S.profile=d.profile;S.sections=d.sections;orig=JSON.stringify(d)}}}catch(e){}
  render();
  if(GH.cfg)enableAdmin();else if(location.hash==='#admin')ghLogin();
  addEventListener('hashchange',()=>{if(location.hash==='#admin'&&!GH.cfg)ghLogin()});
