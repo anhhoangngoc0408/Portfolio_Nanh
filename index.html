@@ -197,7 +197,7 @@ function render(){
  <div class="links rv"><a href="mailto:${esc(p.email)}"><span>Email</span><span${ed('email')}>${esc(p.email)}</span></a>${p.links.filter(l=>safe(l.url)).map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener"><span>${esc(l.label)}</span><span>↗</span></a>`).join('')}</div></div></section>
  <footer>© ${new Date().getFullYear()} ${esc(p.name)}</footer></div>
  <div class="dl" id="dl">${decor}</div>
- ${canEdit?`<div class="bar">${edit?`<button class="btn g sm" data-act="addsec">＋ Add section</button><button class="btn g sm" data-act="marq">Marquee</button><button class="btn g sm" data-act="links">Links</button><button class="btn p sm" data-act="save">Save &amp; publish</button><button class="btn g sm" data-act="cancel">Cancel</button>`:`<button class="btn p" data-act="on">✎ Edit page</button><button class="btn g sm" data-act="logout">Thoát admin</button>`}</div>`:''}`;
+ ${canEdit?`<div class="bar">${edit?`<button class="btn g sm" data-act="addsec">＋ Add section</button><button class="btn g sm" data-act="marq">Marquee</button><button class="btn g sm" data-act="links">Links</button><button class="btn p sm" data-act="save">Save &amp; publish</button><button class="btn g sm" data-act="cancel">Cancel</button>`:`<button class="btn p" data-act="on">✎ Edit page</button><button class="btn g sm" data-act="logout">Logout Admin mode</button>`}</div>`:''}`;
  if(edit){const a=$('[data-f="about"]');if(a)a.textContent=p.about}
  place();reveal();
 }
