@@ -1,23 +1,24 @@
 {
   "profile": {
     "name": "Ngọc Ánh",
-    "role": "Business Analyst · Web Developer · Automation Tester",
-    "tagline": "I bridge business needs and digital products: clear analysis, clean builds, careful testing.",
-    "about": "I work at the intersection of **business analysis**, *web development* and test automation. I love turning vague requirements into products that run smoothly and are easy to use.",
-    "email": "hello@example.com",
+    "role": "BUSINESS ANALYST · WEB DEVELOPER",
+    "tagline": "Just a girl with too many tabs open 👧🏻",
+    "about": "I work at the intersection of **business analysis**, *web development*. I love turning vague requirements into products that run smoothly and are easy to use.",
+    "email": "anhhoangngoc0408@gmail.com",
     "photo": "images/mwg6xkdelxqp.jpg",
-    "marquee": "Business Analyst · Web Developer · Automation Tester · Flowers · Food · Billiards · Tech",
-    "marqueeSpeed": 30,
+    "marquee": "Business Analyst · Web Developer · Machine Learning · Deep Learning",
+    "marqueeSpeed": 40,
     "links": [
       {
         "label": "LinkedIn",
-        "url": "https://linkedin.com"
+        "url": "https://www.linkedin.com/in/ngoc-anh-hoang-3626bb2b8/"
       },
       {
         "label": "GitHub",
-        "url": "https://github.com"
+        "url": "https://github.com/anhhoangngoc0408"
       }
-    ]
+    ],
+    "phone": "0933506484"
   },
   "sections": [
     {
@@ -27,15 +28,19 @@
       "items": [
         {
           "title": "Business Analysis",
-          "desc": "Requirements analysis, User Stories, BPMN, SQL, Jira"
+          "desc": "Confluence, User Journey, Requirement elicitation, BPMN, DFD, UML, ERD."
         },
         {
-          "title": "Web Development",
-          "desc": "HTML/CSS, JavaScript, React, REST API"
+          "title": "Programm Languages",
+          "desc": "Python, Javasript, Java, Typescript"
         },
         {
-          "title": "Automation Test",
-          "desc": "Selenium, Playwright, Postman, CI/CD"
+          "title": "Data & Framworks",
+          "desc": "PostgreSQL, MySQL, React, Angular, Django, REST APIs, Node.js"
+        },
+        {
+          "title": "AI",
+          "desc": "PyTorch, scikit-learn, computer vision, n8n, LLM-integrated workflows"
         }
       ]
     },
@@ -66,7 +71,25 @@
           "website": "",
           "drive": "",
           "other": "",
-          "icon": "🌻"
+          "icon": "🌻",
+          "theme": "butter"
+        },
+        {
+          "imgs": [
+            "images/mwgcm0fyeabb.jpg"
+          ],
+          "title": "Wecamp Trainee",
+          "sub": "NAB Innovation Centre · Mar 2026 - Jun 2026",
+          "brief": "Archived Runner Up Prize for Capstone Project.",
+          "roles": "",
+          "skills": "",
+          "link": "",
+          "desc": "",
+          "github": "",
+          "website": "",
+          "drive": "",
+          "other": "",
+          "theme": "white"
         }
       ]
     },
@@ -75,46 +98,66 @@
       "type": "projects",
       "title": "Projects",
       "cats": [
-        "Business Analyst",
-        "Website Development",
-        "Automation Test"
+        "My recent project"
       ],
       "items": [
         {
-          "cat": "Business Analyst",
-          "title": "Order Management System",
-          "sub": "2025",
-          "brief": "End-to-end analysis of the ordering workflow.",
-          "desc": "Analysed the full ordering process, designed the business flows and wrote the **SRS** documentation.\n\nResult: *noticeably shorter order-processing time*.",
-          "imgs": [],
-          "github": "",
-          "website": "",
+          "cat": "My recent project",
+          "title": "AeroVista: Aviation Decision Support System",
+          "sub": "Oct 2026",
+          "brief": "Defined KPIs (OTP, cancellation rate, PLF, RASK, yield, turnaround) and built a 6-page Streamlit dashboard answering 3 business questions.",
+          "desc": "- Built a **star-schema** data warehouse and ETL pipeline on Southwest Airlines BTS 2024 data (on-time performance, T-100, DB1B), validated by 129 automated data-quality checks.\n- **Defined KPIs **(OTP, cancellation rate, PLF, RASK, yield, turnaround) and built a **6-page **- Streamlit dashboard answering** 3 business questions:*** delay drivers, a 15% turnaround-reduction scenario, and load-factor/revenue efficiency.*\n- Separated measured findings from assumptions, e.g. labelled the **turnaround simulator **as a** what-if scenario** rather than causal evidence.",
+          "imgs": [
+            "images/mwgebguzyj2l.jpg"
+          ],
+          "github": "https://github.com/anhhoangngoc0408/flight_bi",
+          "website": "https://aerovista-aviation.streamlit.app/",
           "drive": "",
-          "other": ""
+          "other": "",
+          "roles": "Business Analyst, Fullstack Developers",
+          "skills": "MySQL, Python, Streamlit, ETL",
+          "link": "https://aerovista-aviation.streamlit.app/",
+          "theme": "white"
         },
         {
-          "cat": "Website Development",
-          "title": "Coffee Brand Website",
-          "sub": "2025",
-          "brief": "A fast, mobile-first brand website.",
-          "desc": "Designed and built a brand website, optimised for speed and mobile display.",
-          "imgs": [],
+          "cat": "My recent project",
+          "title": "Digital Green Eligibility Checker",
+          "sub": "NAB Innovation Project - Oct 2026",
+          "brief": "",
+          "desc": "- Defined **user journeys** and **acceptance criteria **for the Eligibility Analysis module through requirement discussions with the project stakeholder.\n- **Modeled workflows in BPMN **and tested eligibility outcomes against business rules, including edge cases and rejection reasons.\n- Designed and delivered a digital green-loan eligibility solution leveraging **React, Java, PostgreSQL, decision-tree navigation**, and JSON-based rule evaluation. ",
+          "imgs": [
+            "images/mwged1qlhm73.jpg"
+          ],
           "github": "",
           "website": "",
           "drive": "",
-          "other": ""
+          "other": "",
+          "roles": "Fullstack Developer",
+          "skills": "React, Redux, Axios, PostgreSQL, Java",
+          "link": "",
+          "theme": "cherry"
         },
         {
-          "cat": "Automation Test",
-          "title": "E-commerce Regression Suite",
-          "sub": "2024",
-          "brief": "Automated regression tests on every deploy.",
-          "desc": "Built a **regression test** suite that runs automatically on every deployment.",
-          "imgs": [],
-          "github": "",
+          "cat": "My recent project",
+          "imgs": [
+            "images/mwgezx1aianr.jpg",
+            "images/mwgf6e2t10kq.jpg",
+            "images/mwgf6huk542i.jpg",
+            "images/mwgf6kphnulr.jpg"
+          ],
+          "title": "Sales Forecasting Web Platform",
+          "sub": "Oct 2025",
+          "brief": "",
+          "roles": "AI Training, Fullstack Developer",
+          "skills": "Django, MySQL, JavaScript (ES6+), Python, XGBoost, LightGBM, RF, Fetch API",
+          "link": "",
+          "desc": "- Developed and optimized a Machine Learning demand forecasting model in Python, achieving **98% R²** via **GridSearchCV**.\n- Built a **Django MVT backend **with **MySQL **and optimized large-dataset queries using raw SQL cursors.\n- Developed a hybrid frontend using **JavaScript (ES6+), Fetch API, and AJAX,**.\n- Integrated **Chart.js **to create interactive line, bar, and doughnut charts with user-driven data updates.\n- Designed **ERD **and relational **database schema**; *led team task delegation*.",
+          "github": "https://github.com/anhhoangngoc0408/DO_AN_NHOM_MLXPERT",
           "website": "",
           "drive": "",
-          "other": ""
+          "other": "",
+          "icon": "📈",
+          "theme": "white"
         }
       ]
     },
@@ -124,11 +167,38 @@
       "title": "Certificates",
       "items": [
         {
-          "title": "ISTQB Foundation Level",
-          "sub": "ISTQB · 2024",
-          "brief": "International software testing certification.",
-          "desc": "International certification in software testing fundamentals.",
-          "imgs": []
+          "title": "IELTS Certificate",
+          "sub": "British Council · 2024",
+          "brief": "Achived 6.5 band",
+          "desc": "Code: VN02824514234-27-12-2024-ETRF",
+          "imgs": [
+            "images/mwgfatrp7h20.jpg"
+          ],
+          "icon": "⭐",
+          "link": "",
+          "theme": "white"
+        },
+        {
+          "imgs": [
+            "images/mwgenqqovwo9.jpg"
+          ],
+          "title": "Foundations of Project Management",
+          "sub": "Google 2025",
+          "brief": "",
+          "link": "https://coursera.org/share/f300150bb9723deacbc3e0f970511224",
+          "desc": "- Describe project management skills, roles, and responsibilities across a variety of industries\n- Explain the project management life cycle and compare different program management methodologies \n- Define organizational structure and organizational culture and explain how it impacts project management.",
+          "theme": "white"
+        },
+        {
+          "imgs": [
+            "images/mwgfxwprvixx.jpg"
+          ],
+          "title": "Second Prize, 11th National Student Scientific Research Competition on Econometrics and Applications (2026)",
+          "sub": "Jun 2026",
+          "brief": "MetroPT-3: AI-Based Operational Risk Early Warning System",
+          "link": "",
+          "desc": "- Developed a** two-stage AI pipeline** on 1.5M+ records, combining CNN-LSTM multi-horizon sensor forecasting with seven anomaly detection classifiers.\n- Achieved **0.998+ accuracy and 0.90+ macro F1** using Adaptive Random Forest, with performance evaluated across three forecast horizons.\n- Quantified the economic impact of missed failures and false alarms for HCMC Metro Line 1, estimating **USD 1.7K–6.9K** in net benefits across evaluated scenarios.",
+          "theme": "sky"
         }
       ]
     }
