@@ -116,6 +116,13 @@ textarea{min-height:140px;resize:vertical}
 .t-sunset{--cbg:linear-gradient(135deg,#ff5e62,#ff9966)}.t-aurora{--cbg:linear-gradient(135deg,#00a38a,#6c5ce7)}.t-cyber{--cbg:linear-gradient(135deg,#7f00ff,#e100ff)}.t-midnight{--cbg:linear-gradient(135deg,#0f2027,#2c5364)}
 .ci{position:absolute;font-size:36px;line-height:1;animation:fl 6s ease-in-out infinite;animation-delay:var(--dl,0s);filter:drop-shadow(0 4px 5px #0002);pointer-events:none;z-index:2}.cvw .ci{left:12px;bottom:8px}.sk .ci{right:20px;top:18px;font-size:32px}
 .sws{display:flex;gap:10px;flex-wrap:wrap}.sw{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:2px solid transparent;border-radius:14px;padding:8px;cursor:pointer;color:var(--ink);font:500 12px var(--sans)}.sw i{width:46px;height:46px;border-radius:50%;border:1px solid var(--line)}.sw.on{border-color:var(--a)}
+.grip{cursor:grab;font:700 18px/1.4 var(--sans);color:var(--mute);padding:0 10px;border:1px dashed var(--line);border-radius:10px;user-select:none}.grip:active{cursor:grabbing}
+section.dragging{opacity:.35}section.drop-before{box-shadow:0 -5px 0 -1px var(--a)}section.drop-after{box-shadow:0 5px 0 -1px var(--a)}
+.go{position:absolute;left:10px;top:10px;z-index:3;background:#000a;color:#fff;border-radius:99px;padding:3px 11px;font:600 12px var(--sans)}
+[data-ph]:empty::before{content:attr(data-ph);opacity:.45}
+.links a.st{cursor:default}.links a.st:hover{padding-left:0;color:var(--ink)}
+.cg{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.gpv{height:56px;border-radius:14px;border:1px solid var(--line);margin:12px 0}
+@media(max-width:720px){.dc{font-size:calc(var(--s)*.72)}.dc.ball{width:calc(var(--s)*.72);height:calc(var(--s)*.72)}.dc.nm{display:none}}
 </style>
 </head>
 <body>
@@ -123,33 +130,23 @@ textarea{min-height:140px;resize:vertical}
 <dialog id="dlg"></dialog>
 
 <!-- DATA: all page content lives here (or edit directly on the page with the Edit button) -->
-<script id="data" type="application/json">
-{"profile":{"name":"Ngọc Ánh","role":"Business Analyst · Web Developer · Automation Tester","tagline":"I bridge business needs and digital products: clear analysis, clean builds, careful testing.","about":"I work at the intersection of **business analysis**, *web development* and test automation. I love turning vague requirements into products that run smoothly and are easy to use.","email":"hello@example.com","photo":"","marquee":"Business Analyst · Web Developer · Automation Tester · Flowers · Food · Billiards · Tech","marqueeSpeed":30,"links":[{"label":"LinkedIn","url":"https://linkedin.com"},{"label":"GitHub","url":"https://github.com"}]},
-"sections":[
-{"id":"skills","type":"skills","title":"Skills","items":[
-{"title":"Business Analysis","desc":"Requirements analysis, User Stories, BPMN, SQL, Jira"},
-{"title":"Web Development","desc":"HTML/CSS, JavaScript, React, REST API"},
-{"title":"Automation Test","desc":"Selenium, Playwright, Postman, CI/CD"}]},
-{"id":"experience","type":"experience","title":"Experience","items":[
-{"title":"Business Analyst","sub":"ABC Company · 2023 – Present","brief":"Analysed and documented a sales management system.","desc":"Analysed requirements and wrote documentation for a **sales management system**.\n- Worked with 3 dev and QA teams\n- *Cut requirement sign-off time by 30%*","imgs":[]}]},
-{"id":"projects","type":"projects","title":"Projects","cats":["Business Analyst","Website Development","Automation Test"],"items":[
-{"cat":"Business Analyst","title":"Order Management System","sub":"2025","brief":"End-to-end analysis of the ordering workflow.","desc":"Analysed the full ordering process, designed the business flows and wrote the **SRS** documentation.\n\nResult: *noticeably shorter order-processing time*.","imgs":[],"github":"","website":"","drive":"","other":""},
-{"cat":"Website Development","title":"Coffee Brand Website","sub":"2025","brief":"A fast, mobile-first brand website.","desc":"Designed and built a brand website, optimised for speed and mobile display.","imgs":[],"github":"","website":"","drive":"","other":""},
-{"cat":"Automation Test","title":"E-commerce Regression Suite","sub":"2024","brief":"Automated regression tests on every deploy.","desc":"Built a **regression test** suite that runs automatically on every deployment.","imgs":[],"github":"","website":"","drive":"","other":""}]},
-{"id":"certificates","type":"certificates","title":"Certificates","items":[{"title":"ISTQB Foundation Level","sub":"ISTQB · 2024","brief":"International software testing certification.","desc":"International certification in software testing fundamentals.","imgs":[]}]}
-]}
-</script>
+<script id="data" type="application/json">{"profile":{"name":"Ngọc Ánh","role":"Business Analyst · Web Developer · Automation Tester","tagline":"I bridge business needs and digital products: clear analysis, clean builds, careful testing.","about":"I work at the intersection of **business analysis**, *web development* and test automation. I love turning vague requirements into products that run smoothly and are easy to use.","email":"hello@example.com","photo":"","marquee":"Business Analyst · Web Developer · Automation Tester · Flowers · Food · Billiards · Tech","marqueeSpeed":30,"links":[{"label":"LinkedIn","url":"https://linkedin.com"},{"label":"GitHub","url":"https://github.com"}],"phone":"","location":"Ho Chi Minh City"},"sections":[{"id":"skills","type":"skills","title":"Skills","items":[{"title":"Business Analysis","desc":"Requirements analysis, User Stories, BPMN, SQL, Jira"},{"title":"Web Development","desc":"HTML/CSS, JavaScript, React, REST API"},{"title":"Automation Test","desc":"Selenium, Playwright, Postman, CI/CD"}]},{"id":"experience","type":"experience","title":"Experience","items":[{"title":"Business Analyst","sub":"ABC Company · 2023 – Present","brief":"Analysed and documented a sales management system.","desc":"Analysed requirements and wrote documentation for a **sales management system**.\n- Worked with 3 dev and QA teams\n- *Cut requirement sign-off time by 30%*","imgs":[]}]},{"id":"projects","type":"projects","title":"Projects","cats":["Business Analyst","Website Development","Automation Test"],"items":[{"cat":"Business Analyst","title":"Order Management System","sub":"2025","brief":"End-to-end analysis of the ordering workflow.","desc":"Analysed the full ordering process, designed the business flows and wrote the **SRS** documentation.\n\nResult: *noticeably shorter order-processing time*.","imgs":[],"github":"","website":"","drive":"","other":""},{"cat":"Website Development","title":"Coffee Brand Website","sub":"2025","brief":"A fast, mobile-first brand website.","desc":"Designed and built a brand website, optimised for speed and mobile display.","imgs":[],"github":"","website":"","drive":"","other":""},{"cat":"Automation Test","title":"E-commerce Regression Suite","sub":"2024","brief":"Automated regression tests on every deploy.","desc":"Built a **regression test** suite that runs automatically on every deployment.","imgs":[],"github":"","website":"","drive":"","other":""}]},{"id":"certificates","type":"certificates","title":"Certificates","items":[{"title":"ISTQB Foundation Level","sub":"ISTQB · 2024","brief":"International software testing certification.","desc":"International certification in software testing fundamentals.","imgs":[]}]}]}</script>
 
 <script>
 const $=(s,r=document)=>r.querySelector(s);
 const S=JSON.parse($('#data').textContent);let orig=JSON.stringify(S);
 const TYPES={projects:'Projects',experience:'Experience',skills:'Skills',certificates:'Certificates',hobbies:'Interests',activities:'Activities'};
-const DC=[{e:'🌸',x:8,y:10,s:44,dl:0},{e:'🌷',x:28,y:5,s:38,dl:1.2},{e:'📷',x:72,y:5,s:40,dl:2.1},{e:'🌻',x:92,y:13,s:48,dl:.6},{e:'🍉',x:94,y:35,s:36,dl:1.6},{e:'🍜',x:7,y:34,s:46,dl:.3},{e:'🍰',x:93,y:58,s:44,dl:2.4},{e:'🏸',x:6,y:56,s:38,dl:1.1},{e:'💻',x:14,y:90,s:48,dl:.8},{e:'🎧',x:88,y:84,s:44,dl:1.9},{e:'🦁',x:70,y:95,s:38,dl:.2},{e:'🤖',x:19,y:22,s:46,dl:1.3},{e:'💵',x:81,y:26,s:40,dl:.9},{e:'📊',x:21,y:46,s:38,dl:2.2},{c:'cue',x:24,y:72,dl:1},{c:'ball',n:8,x:11,y:70,s:44,col:'#15171b',dl:.5},{c:'ball',n:3,x:52,y:97,s:36,col:'#d63a3a',dl:2}];
+const DC=[{e:'🍰',side:'L',u:0.655,v:0.94,s:42,dl:1.5},{e:'🍜',side:'L',u:0.072,v:0.063,s:46,dl:2.5,nm:1},{e:'🌭',side:'L',u:0.944,v:0.063,s:46,dl:1.9},{c:'ball',n:8,side:'L',u:0.099,v:0.755,s:44,col:'#15171b',dl:0.4,nm:1},{e:'🌷',side:'L',u:0.47,v:0.468,s:44,dl:0.0},{e:'💡',side:'L',u:0.497,v:0.091,s:36,dl:0.2,nm:1},{e:'🔥',side:'L',u:0.905,v:0.586,s:38,dl:0.5},{e:'🌸',side:'L',u:0.95,v:0.979,s:48,dl:1.6,nm:1},{e:'⭐',side:'L',u:0.204,v:0.347,s:42,dl:1.2},{c:'cue',side:'L',u:0.36,v:0.959,dl:1.5,nm:1},{e:'💻',side:'L',u:0.762,v:0.297,s:38,dl:0.5},{e:'📸',side:'R',u:0.503,v:0.353,s:42,dl:1.7,nm:1},{e:'🌻',side:'R',u:0.337,v:0.99,s:36,dl:0.0},{e:'🍉',side:'R',u:0.898,v:0.865,s:40,dl:1.2,nm:1},{e:'⌨️',side:'R',u:0.08,v:0.052,s:44,dl:1.1},{e:'🦁',side:'R',u:0.068,v:0.653,s:48,dl:2.6,nm:1},{e:'🎧',side:'R',u:0.871,v:0.083,s:40,dl:0.2},{e:'🤖',side:'R',u:0.418,v:0.017,s:38,dl:0.8,nm:1},{e:'💵',side:'R',u:0.877,v:0.492,s:36,dl:1.3},{e:'📈',side:'R',u:0.482,v:0.715,s:48,dl:0.2,nm:1},{e:'🏸',side:'R',u:0.222,v:0.377,s:36,dl:0.3}];
 const TH=[['mix','Alternate','linear-gradient(90deg,var(--a) 50%,var(--a2) 50%)'],['mint','Mint','linear-gradient(135deg,#a8edea,#fed6e3)'],['peach','Peach','linear-gradient(135deg,#ffecd2,#fcb69f)'],['lavender','Lavender','linear-gradient(135deg,#e0c3fc,#8ec5fc)'],['candy','Candy','linear-gradient(135deg,#ff9a9e,#fecfef)'],['lemon','Lemon','linear-gradient(135deg,#f6d365,#fda085)'],['grad','Pink–Violet','linear-gradient(135deg,var(--a),var(--a2))'],['sunset','Sunset','linear-gradient(135deg,#ff5e62,#ff9966)'],['aurora','Aurora','linear-gradient(135deg,#00a38a,#6c5ce7)'],['cyber','Cyber','linear-gradient(135deg,#7f00ff,#e100ff)'],['midnight','Midnight','linear-gradient(135deg,#0f2027,#2c5364)'],['pink','Pink','var(--a)'],['black','Black','#101216'],['white','White','#fff']];
-const okc=x=>x&&/^#[0-9a-f]{6}$/i.test(x.bg||'');
+const NEWTH=[['cotton','Cotton Candy','linear-gradient(135deg,#ffc3e1,#c3e5ff)','l'],['matcha','Matcha','linear-gradient(135deg,#d4fc79,#96e6a1)','l'],['sky','Sky','linear-gradient(135deg,#89f7fe,#66a6ff)','l'],['butter','Butter','linear-gradient(135deg,#fff3b0,#ffcf9e)','l'],['lilac','Lilac Mist','linear-gradient(135deg,#e8d4ff,#ffd6e8)','l'],['sand','Sand','linear-gradient(135deg,#f6ead7,#e7c9a0)','l'],['mango','Mango','linear-gradient(135deg,#ffd200,#f7971e)','l'],['coral','Coral Reef','linear-gradient(135deg,#ff9a8b,#ff99ac)','l'],['sorbet','Sorbet','linear-gradient(135deg,#fbc2eb,#a6c1ee)','l'],['spring','Spring','linear-gradient(135deg,#84fab0,#8fd3f4)','l'],['ocean','Ocean','linear-gradient(135deg,#0083b0,#00b4db)','d'],['berry','Berry','linear-gradient(135deg,#8e2de2,#4a00e0)','d'],['flamingo','Flamingo','linear-gradient(135deg,#ff512f,#dd2476)','d'],['forest','Forest','linear-gradient(135deg,#134e5e,#71b280)','d'],['royal','Royal','linear-gradient(135deg,#1e3c72,#2a5298)','d'],['twilight','Twilight','linear-gradient(135deg,#355c7d,#6c5b7b 50%,#c06c84)','d'],['neon','Neon Night','linear-gradient(135deg,#0f0c29,#302b63 50%,#24243e)','d'],['lagoon','Lagoon','linear-gradient(135deg,#43cea2,#185a9d)','d'],['cherry','Cherry','linear-gradient(135deg,#eb3349,#f45c43)','d'],['plum','Plum','linear-gradient(135deg,#6a3093,#a044ff)','d']];
+TH.splice(TH.findIndex(t=>t[0]==='pink'),0,...NEWTH);
+{const TONE={d:'--cfg:#fff;--cm:#ffffffd0;--cl:#ffffff30;--ca:#fff;--chip:#ffffff30',l:'--cfg:#16181d;--cm:#16181dbb;--cl:#16181d1f;--ca:#16181d;--chip:#ffffff70'},st=document.createElement('style');st.textContent=NEWTH.map(([k,,bg,t])=>`.t-${k}{--cbg:${bg};${TONE[t]}}`).join('');document.head.append(st)}
+const HX=/^#[0-9a-f]{6}$/i,okc=x=>!!x&&HX.test(x.bg||'');
 const lum=h=>{const n=parseInt(h.slice(1),16),f=v=>{v/=255;return v<=.03928?v/12.92:((v+.055)/1.055)**2.4};return .2126*f(n>>16)+.7152*f(n>>8&255)+.0722*f(n&255)};
-const cst=x=>{if(!okc(x))return'';const d=lum(x.bg)<.18;return `style="--cbg:${x.bg};${d?'--cfg:#f4f5f7;--cm:#c3c8d2;--cl:#ffffff2e;--ca:#ffb3c6;--chip:#ffffff1f':'--cfg:#16181d;--cm:#555b66;--cl:#0000001a;--ca:var(--a);--chip:color-mix(in srgb,var(--a) 12%,transparent)'}"`};
-const tcls=(s,k,x)=>{if(okc(x))return 't-custom';const t=(x&&x.theme&&x.theme!=='inherit'?x.theme:s.theme)||'mix';return 't-'+(t==='mix'?(k%2?'pink':'grad'):t)};
+const src=(x,s)=>okc(x)?x:(!(x&&x.theme&&x.theme!=='inherit')&&okc(s)?s:null);
+const cst=(x,s)=>{const o=src(x,s);if(!o)return'';const g=HX.test(o.bg2||''),d=(g?(lum(o.bg)+lum(o.bg2))/2:lum(o.bg))<.18,bg=g?`linear-gradient(${+o.ang||135}deg,${o.bg},${o.bg2})`:o.bg;return `style="--cbg:${bg};${d?'--cfg:#f4f5f7;--cm:#c3c8d2;--cl:#ffffff2e;--ca:#ffb3c6;--chip:#ffffff1f':'--cfg:#16181d;--cm:#555b66;--cl:#0000001a;--ca:var(--a);--chip:color-mix(in srgb,var(--a) 12%,transparent)'}"`};
+const tcls=(s,k,x)=>{if(src(x,s))return 't-custom';const t=(x&&x.theme&&x.theme!=='inherit'?x.theme:s.theme)||'mix';return 't-'+(t==='mix'?(k%2?'pink':'grad'):t)};
+const lk=x=>{let u=((x&&x.link)||'').trim();if(!u)return'';if(!/^[a-z][a-z0-9+.-]*:/i.test(u))u='https://'+u;return safe(u)?u:''};
 const sws=cur=>TH.map(([k,n,bg])=>`<button type="button" class="sw${k===cur?' on':''}" data-th="${k}"><i style="background:${bg}"></i>${n}</button>`).join('');
 const pos={};
 let canEdit=false,edit=false,api=null,assets=null;
@@ -169,23 +166,24 @@ function card(x,si,i,k=i){
  const n=(x.imgs||[]).length;const ic=x.icon?`<span class="ci" style="--dl:${(k*.9)%3}s">${esc(x.icon)}</span>`:'';
  const cv=n?`<div class="cv" style="background-image:url(${esc(x.imgs[0])})"></div>${n>1?`<span class="cnt">▣ ${n}</span>`:''}`:`<div class="cv ph">${String(i+1).padStart(2,'0')}</div>`;
  const br=x.brief||(x.desc||'').replace(/[*\n-]+/g,' ').trim().slice(0,120);
- return `<article class="card rv ${tcls(S.sections[si],k,x)}" ${cst(x)} data-act="open" data-s="${si}" data-i="${i}"><div class="cvw">${cv}${ic}</div>${tl(si,i)}<div class="bd"><div class="meta">${esc(x.sub)}</div><h3>${esc(x.title)}</h3><p>${esc(br)}</p><span class="more">View details →</span></div></article>`;
+ const lu=lk(x);
+ return `<article class="card rv ${tcls(S.sections[si],k,x)}" ${cst(x,S.sections[si])} data-act="${lu?'go':'open'}" data-s="${si}" data-i="${i}"><div class="cvw">${cv}${ic}${lu?'<span class="go">↗ Visit</span>':''}</div>${tl(si,i)}<div class="bd"><div class="meta">${esc(x.sub)}</div><h3>${esc(x.title)}</h3><p>${esc(br)}</p><span class="more"${lu?` data-act="open" data-s="${si}" data-i="${i}"`:''}>View details →</span></div></article>`;
 }
 function sec(s,si){
- const add=edit?`<span class="adm"><button class="btn g sm" data-act="add" data-s="${si}">＋ Add</button><button class="btn g sm" data-act="style" data-s="${si}">🎨 Card colour</button>${s.type==='projects'?`<button class="btn g sm" data-act="addcat" data-s="${si}">＋ Category</button>`:''}<button class="btn g sm d" data-act="delsec" data-s="${si}">Delete section</button></span>`:'';
+ const add=edit?`<span class="adm"><button class="btn g sm" data-act="up" data-s="${si}" title="Move up">↑</button><button class="btn g sm" data-act="down" data-s="${si}" title="Move down">↓</button><button class="btn g sm" data-act="add" data-s="${si}">＋ Add</button><button class="btn g sm" data-act="style" data-s="${si}">🎨 Card colour</button>${s.type==='projects'?`<button class="btn g sm" data-act="addcat" data-s="${si}">＋ Category</button>`:''}<button class="btn g sm d" data-act="delsec" data-s="${si}">Delete section</button></span>`:'';
  let b='';
- if(s.type==='skills')b=`<div class="skills">${s.items.map((x,i)=>`<div class="sk rv ${tcls(s,i,x)}" ${cst(x)}>${tl(si,i)}${x.icon?`<span class="ci" style="--dl:${(i*.9)%3}s">${esc(x.icon)}</span>`:''}<h4>${esc(x.title)}</h4>${(x.desc||'').split(',').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div>`).join('')}</div>`;
+ if(s.type==='skills')b=`<div class="skills">${s.items.map((x,i)=>`<div class="sk rv ${tcls(s,i,x)}" ${cst(x,s)}>${tl(si,i)}${x.icon?`<span class="ci" style="--dl:${(i*.9)%3}s">${esc(x.icon)}</span>`:''}<h4>${esc(x.title)}</h4>${(x.desc||'').split(',').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div>`).join('')}</div>`;
  else if(s.type==='experience')b=`<div class="tlw">${s.items.map((x,i)=>card(x,si,i)).join('')}</div>`;
  else if(s.type==='projects')b=cats(s).filter(c=>edit||s.items.some(x=>(x.cat||'Other')===c)).map(c=>`<div class="cat"><span>${esc(c)}</span>${edit?`<span class="adm"><button class="btn g sm" data-act="catadd" data-s="${si}" data-c="${esc(c)}">＋</button><button class="btn g sm" data-act="catren" data-s="${si}" data-c="${esc(c)}">Rename</button><button class="btn g sm d" data-act="catdel" data-s="${si}" data-c="${esc(c)}">Delete</button></span>`:''}</div><div class="grid">${s.items.map((x,i)=>[x,i]).filter(([x])=>(x.cat||'Other')===c).map(([x,i],k)=>card(x,si,i,k)).join('')}</div>`).join('');
  else b=`<div class="grid">${s.items.map((x,i)=>card(x,si,i)).join('')}</div>`;
- return `<section id="s${si}"><h2 class="rv"><span${edit?` contenteditable data-st="${si}"`:''}>${esc(s.title)}</span><b>${String(s.items.length).padStart(2,'0')}</b>${add}</h2>${b}</section>`;
+ return `<section id="s${si}" data-si="${si}"><h2 class="rv">${edit?`<span class="grip" draggable="true" data-grip="${si}" title="Drag to move this section">⠿</span>`:''}<span${edit?` contenteditable data-st="${si}"`:''}>${esc(s.title)}</span><b>${String(s.items.length).padStart(2,'0')}</b>${add}</h2>${b}</section>`;
 }
 function render(){
  const p=S.profile,mqItems=(p.marquee!=null?String(p.marquee).split(/[·\n]/):p.role.split('·').concat(['Flowers','Food','Billiards','Tech'])).map(x=>x.trim()).filter(Boolean),mqSp=Math.max(5,Math.min(120,+p.marqueeSpeed||30)),m=mqItems.map(r=>`${esc(r)}<b>✦</b>`).join('').repeat(Math.max(3,Math.ceil(12/Math.max(mqItems.length,1))));
- const pi=S.sections.findIndex(s=>s.type==='projects');
- const decor=DC.map((d,k)=>d.c==='cue'?`<i class="dc cue" data-k="${k}" style="--dl:${d.dl}s"></i>`:d.c==='ball'?`<i class="dc ball" data-k="${k}" data-n="${d.n}" style="--s:${d.s}px;--c:${d.col};--dl:${d.dl}s"></i>`:`<span class="dc" data-k="${k}" style="--s:${d.s}px;--dl:${d.dl}s">${d.e}</span>`).join('');
+ const pi=S.sections.findIndex(s=>s.type==='projects'),ph=(p.phone||'').trim(),loc=p.location!=null?p.location:'Ho Chi Minh City',crow=(ph||edit?`<a${ph?` href="tel:${esc(ph.replace(/[^+\d]/g,''))}"`:' class="st"'}><span>Phone</span><span${ed('phone')} data-ph="Add phone number">${esc(ph)}</span></a>`:'')+(loc||edit?`<a class="st"><span>Location</span><span${ed('location')} data-ph="City">${esc(loc)}</span></a>`:'');
+ const decor=DC.map((d,k)=>{const nm=d.nm?' nm':'';return d.c==='cue'?`<i class="dc cue${nm}" data-k="${k}" style="--dl:${d.dl}s"></i>`:d.c==='ball'?`<i class="dc ball${nm}" data-k="${k}" data-n="${d.n}" style="--s:${d.s}px;--c:${d.col};--dl:${d.dl}s"></i>`:`<span class="dc${nm}" data-k="${k}" style="--s:${d.s}px;--dl:${d.dl}s">${d.e}</span>`}).join('');
  $('#app').className=edit?'ed':'';
- $('#app').innerHTML=`<div class="wrap"><nav><b>${esc(p.name.split(' ')[0])}<i>.</i></b><div>${S.sections.map((s,i)=>`<a href="#s${i}">${esc(s.title)}</a>`).join('')}<a href="#contact">Contact</a></div></nav>
+ $('#app').innerHTML=`<div class="wrap"><nav><b>${esc(p.name)}<i>.</i></b><div>${S.sections.map((s,i)=>`<a href="#s${i}">${esc(s.title)}</a>`).join('')}<a href="#contact">Contact</a></div></nav>
  <div class="hero"><div class="stage"><div class="ring"><div class="frame">${p.photo?`<img src="${esc(p.photo)}" alt="${esc(p.name)}">`:`<span>${esc(p.name.slice(0,1))}</span>`}${edit?`<label class="chg">📷 ${p.photo?'Change':'Upload'} photo<input type="file" id="phf" accept="image/*" hidden></label>`:''}</div></div></div>
  <span class="eyebrow"${ed('role')}>${esc(p.role)}</span>
  <h1>Hi, I'm <em${ed('name')}>${esc(p.name)}</em></h1>
@@ -194,7 +192,7 @@ function render(){
  <div class="mq" style="--mq:${mqSp}s"><div>${m}</div><div>${m}</div></div>
  <div class="wrap">${S.sections.map(sec).join('')}
  <section id="contact"><h2 class="rv">Contact</h2><div class="about"><p class="rv"${ed('about')}>${md(p.about)}</p>
- <div class="links rv"><a href="mailto:${esc(p.email)}"><span>Email</span><span${ed('email')}>${esc(p.email)}</span></a>${p.links.filter(l=>safe(l.url)).map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener"><span>${esc(l.label)}</span><span>↗</span></a>`).join('')}</div></div></section>
+ <div class="links rv"><a href="mailto:${esc(p.email)}"><span>Email</span><span${ed('email')}>${esc(p.email)}</span></a>${crow}${p.links.filter(l=>safe(l.url)).map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener"><span>${esc(l.label)}</span><span>↗</span></a>`).join('')}</div></div></section>
  <footer>© ${new Date().getFullYear()} ${esc(p.name)}</footer></div>
  <div class="dl" id="dl">${decor}</div>
  ${canEdit?`<div class="bar">${edit?`<button class="btn g sm" data-act="addsec">＋ Add section</button><button class="btn g sm" data-act="marq">Marquee</button><button class="btn g sm" data-act="links">Links</button><button class="btn p sm" data-act="save">Save &amp; publish</button><button class="btn g sm" data-act="cancel">Cancel</button>`:`<button class="btn p" data-act="on">✎ Edit page</button><button class="btn g sm" data-act="logout">Logout Admin mode</button>`}</div>`:''}`;
@@ -221,7 +219,7 @@ function wire(c){
 }
 function detail(si,i){
  const x=S.sections[si].items[i],L=[['github','GitHub'],['website','Website'],['drive','Google Drive'],['other','Other link']].filter(([k])=>safe(x[k]));
- show(`${car(x.imgs||[])}<div class="meta">${esc(x.cat?x.cat+' · ':'')}${esc(x.sub)}</div><h3>${esc(x.title)}</h3><div class="dd">${md(x.desc||x.brief)}</div><div class="lk">${L.map(([k,n])=>`<a class="btn p sm" href="${esc(x[k])}" target="_blank" rel="noopener">${n} ↗</a>`).join('')}</div><div class="row"><button class="btn g sm" id="x">Close</button></div>`);
+ show(`${car(x.imgs||[])}<div class="meta">${esc(x.cat?x.cat+' · ':'')}${esc(x.sub)}</div><h3>${esc(x.title)}</h3><div class="dd">${md(x.desc||x.brief)}</div><div class="lk">${lk(x)?`<a class="btn p sm" href="${esc(lk(x))}" target="_blank" rel="noopener">Visit ↗</a>`:''}${L.map(([k,n])=>`<a class="btn p sm" href="${esc(x[k])}" target="_blank" rel="noopener">${n} ↗</a>`).join('')}</div><div class="row"><button class="btn g sm" id="x">Close</button></div>`);
  $('#x',dlg).onclick=()=>dlg.close();const c=$('.car',dlg);if(c)wire(c);
 }
 async function shrink(f,m=1600){
@@ -243,11 +241,22 @@ function form(title,fields,v,done){
  };paint();
 }
 const IF0=type=>type==='skills'?[{k:'title',l:'Skill group name'},{k:'desc',l:'Skills (comma-separated)',t:'area'}]:
- [...(type==='projects'?[{k:'cat',l:'Category (e.g. Business Analyst, Website Development…)'}]:[]),{k:'title',l:'Title'},{k:'sub',l:type==='experience'?'Company · period':'Subtitle (year, organisation…)'},{k:'brief',l:'Brief description (shown on the card)'},{k:'desc',l:'Detailed description, in English (supports **bold**, *italic*, and lines starting with “- ”)',t:'area',md:1},
+ [...(type==='projects'?[{k:'cat',l:'Category (e.g. Business Analyst, Website Development…)'}]:[]),{k:'title',l:'Title'},{k:'sub',l:type==='experience'?'Company · period':'Subtitle (year, organisation…)'},{k:'brief',l:'Brief description (shown on the card)'},{k:'link',l:'Priority link (optional): clicking the card opens this link directly, “View details →” opens the details'},{k:'desc',l:'Detailed description, in English (supports **bold**, *italic*, and lines starting with “- ”)',t:'area',md:1},
  ...(['projects','experience'].includes(type)?[{k:'github',l:'GitHub'},{k:'website',l:'Website'},{k:'drive',l:'Google Drive'},{k:'other',l:'Other link'}]:[]),{k:'imgs',l:'Photos (add several; they play as a slideshow in the detail view)',t:'imgs'}];
 const ICONS=['🌸','🌷','🌻','🍉','🍜','🍰','🌭','💻','🎧','⌨️','🎱','⭐','🔥','💡','🦁','🏸','📸','🤖','📈','💵'];
 const IF=t=>[...IF0(t),{k:'icon',l:'Floating icon (optional)',t:'icon'}];
 function ICONPICK(f,v){return `<label>${f.l}</label><div class="sws">${['',...ICONS].map(i=>`<button type="button" class="sw${(v.icon||'')===i?' on':''}" data-ic="${i}">${i?`<span style="font-size:24px">${i}</span>`:'None'}</button>`).join('')}</div>`}
+function colorDlg(o,{title,inherit}){
+ const cur=okc(o)?'':(o.theme||(inherit?'inherit':'mix')),H=v=>HX.test(v||''),pk='style="width:64px;height:44px;padding:2px"';
+ const list=[...(inherit?[['inherit','Follow section','var(--card)']]:[]),...TH.filter(t=>!inherit||t[0]!=='mix')];
+ const angs=[[135,'↘ 135°'],[90,'→ 90°'],[180,'↓ 180°'],[225,'↙ 225°'],[270,'← 270°'],[315,'↖ 315°'],[0,'↑ 0°'],[45,'↗ 45°']];
+ show(`<h3>${title}</h3><div class="sws">${list.map(([k,n,bg])=>`<button type="button" class="sw${k===cur?' on':''}" data-th="${k}"><i style="background:${bg}"></i>${n}</button>`).join('')}</div><label>Custom gradient</label><div class="cg"><input type="color" id="c1" value="${okc(o)?o.bg:'#ff9a9e'}" ${pk}><input type="color" id="c2" value="${H(o.bg2)?o.bg2:'#a18cd1'}" ${pk}><select id="an" style="width:auto">${angs.map(([a,n])=>`<option value="${a}"${a===(+o.ang||135)?' selected':''}>${n}</option>`).join('')}</select><label style="display:flex;gap:6px;align-items:center;margin:0"><input type="checkbox" id="sol" style="width:auto"${okc(o)&&!H(o.bg2)?' checked':''}>Solid</label></div><div class="gpv" id="gp"></div><div class="row"><button class="btn g sm" id="x">Close</button><button class="btn p sm" id="cok">Use custom</button></div>`);
+ const gv=()=>{const a=$('#c1',dlg).value,b=$('#c2',dlg).value;return $('#sol',dlg).checked?a:`linear-gradient(${$('#an',dlg).value}deg,${a},${b})`},up=()=>{$('#gp',dlg).style.background=gv()};up();
+ ['c1','c2','an','sol'].forEach(id=>$('#'+id,dlg).oninput=up);
+ $('#x',dlg).onclick=()=>dlg.close();
+ dlg.querySelectorAll('[data-th]').forEach(z=>z.onclick=()=>{o.theme=z.dataset.th;delete o.bg;delete o.bg2;delete o.ang;dlg.close();render()});
+ $('#cok',dlg).onclick=()=>{o.bg=$('#c1',dlg).value;if($('#sol',dlg).checked)delete o.bg2;else o.bg2=$('#c2',dlg).value;o.ang=+$('#an',dlg).value;o.theme='custom';dlg.close();render()}
+}
 document.addEventListener('click',e=>{
  const b=e.target.closest('[data-act]');if(!b)return;
  const a=b.dataset.act,si=+b.dataset.s,i=+b.dataset.i,c=b.dataset.c,s=S.sections[si],x=s&&s.items[i];
@@ -258,16 +267,15 @@ document.addEventListener('click',e=>{
  if(a==='del')ask('Delete this item?',()=>{s.items.splice(i,1);render()});
  if(a==='delsec')ask('Delete this whole section?',()=>{S.sections.splice(si,1);render()});
  if(a==='open')detail(si,i);
+ if(a==='go'){const u=lk(x);if(edit||!u)detail(si,i);else window.open(u,'_blank','noopener')}
+ if(a==='up'&&si>0){[S.sections[si-1],S.sections[si]]=[S.sections[si],S.sections[si-1]];render()}
+ if(a==='down'&&si<S.sections.length-1){[S.sections[si+1],S.sections[si]]=[S.sections[si],S.sections[si+1]];render()}
  if(a==='addcat')form('New category',[{k:'n',l:'Category name'}],{},v=>{if(v.n&&v.n.trim())s.cats=[...cats(s),v.n.trim()]});
  if(a==='catadd')form('Add new',IF('projects'),{cat:c},v=>s.items.push(v));
  if(a==='catren')form('Rename category',[{k:'n',l:'Category name'}],{n:c},v=>{const n=(v.n||'').trim();if(!n)return;s.cats=cats(s).map(z=>z===c?n:z);s.items.forEach(y=>{if((y.cat||'Other')===c)y.cat=n})});
  if(a==='catdel')ask(`Delete the category “${esc(c)}” and all its projects?`,()=>{s.cats=cats(s).filter(z=>z!==c);s.items=s.items.filter(y=>(y.cat||'Other')!==c);render()});
- if(a==='color'&&x){const cur=okc(x)?'':x.theme||'inherit';
-  show(`<h3>This card's color</h3><div class="sws">${[['inherit','Theo section','var(--card)'],...TH.filter(t=>t[0]!=='mix')].map(([k,n,bg])=>`<button type="button" class="sw${k===cur?' on':''}" data-th="${k}"><i style="background:${bg}"></i>${n}</button>`).join('')}</div><label>Or choose random color</label><div class="row" style="justify-content:flex-start;gap:12px"><input type="color" id="cc" value="${okc(x)?x.bg:'#ffd6e0'}" style="width:64px;height:44px;padding:2px"><button class="btn p sm" id="cok">Use this theme</button></div><div class="row"><button class="btn g sm" id="x">Đóng</button></div>`);
-  $('#x',dlg).onclick=()=>dlg.close();
-  dlg.querySelectorAll('[data-th]').forEach(z=>z.onclick=()=>{x.theme=z.dataset.th;delete x.bg;dlg.close();render()});
-  $('#cok',dlg).onclick=()=>{x.bg=$('#cc',dlg).value;dlg.close();render()}}
- if(a==='style'){show(`<h3>Card colour</h3><div class="sws">${sws(s.theme||'mix')}</div><div class="row"><button class="btn g sm" id="x">Close</button></div>`);$('#x',dlg).onclick=()=>dlg.close();dlg.querySelectorAll('[data-th]').forEach(z=>z.onclick=()=>{s.theme=z.dataset.th;dlg.close();render()})}
+ if(a==='color'&&x)colorDlg(x,{title:"This card's theme",inherit:1});
+ if(a==='style')colorDlg(s,{title:'Section card theme'});
  if(a==='addsec'){let pick='mix';show(`<h3>Add a section</h3><label>Card colour</label><div class="sws">${sws(pick)}</div><label>Section type</label>${Object.keys(TYPES).map(t=>`<button class="btn g" style="margin:6px 6px 0 0" data-t="${t}">${TYPES[t]}</button>`).join('')}<div class="row"><button class="btn g sm" id="x">Close</button></div>`);
   dlg.querySelectorAll('[data-th]').forEach(z=>z.onclick=()=>{pick=z.dataset.th;dlg.querySelectorAll('[data-th]').forEach(q=>q.classList.toggle('on',q===z))});
   dlg.querySelectorAll('[data-t]').forEach(z=>z.onclick=()=>{S.sections.push({id:z.dataset.t+Date.now(),type:z.dataset.t,title:TYPES[z.dataset.t],items:[],cats:[],theme:pick});dlg.close();render()});
@@ -289,11 +297,18 @@ async function save(){
  try{await api.publish(JSON.stringify(S,null,2)+'\n');orig=JSON.stringify(S);edit=false;render();toast('Đã lưu! Web cập nhật sau khoảng 1 phút')}
  catch(err){const c=err&&err.code;toast(c===401||c===403?'Token sai hoặc hết hạn, hãy đăng nhập lại':c==='conflict'?'Có bản mới hơn, hãy tải lại trang':'Lưu thất bại, thử lại nhé')}
 }
+/* drag sections to reorder (desktop) */
+let dsec=null,dtg=null;const clrDrop=()=>document.querySelectorAll('.dragging,.drop-before,.drop-after').forEach(n=>n.classList.remove('dragging','drop-before','drop-after'));
+document.addEventListener('dragstart',e=>{const g=e.target.closest&&e.target.closest('[data-grip]');if(!g||!edit)return;dsec=+g.dataset.grip;dtg=null;if(e.dataTransfer){e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',String(dsec));e.dataTransfer.setDragImage&&e.dataTransfer.setDragImage(g.closest('h2'),20,20)}g.closest('section').classList.add('dragging')});
+document.addEventListener('dragover',e=>{if(dsec==null)return;if(e.clientY<90)scrollBy(0,-18);else if(e.clientY>innerHeight-90)scrollBy(0,18);const sc=e.target.closest&&e.target.closest('section[data-si]');if(!sc)return;e.preventDefault();document.querySelectorAll('.drop-before,.drop-after').forEach(n=>n.classList.remove('drop-before','drop-after'));const r=sc.getBoundingClientRect(),after=e.clientY>r.top+r.height/2;sc.classList.add(after?'drop-after':'drop-before');dtg={si:+sc.dataset.si,after}});
+document.addEventListener('drop',e=>{if(dsec==null||!dtg)return;e.preventDefault();let to=dtg.si+(dtg.after?1:0);const from=dsec,[m]=S.sections.splice(from,1);if(from<to)to--;S.sections.splice(to,0,m);dsec=dtg=null;render()});
+document.addEventListener('dragend',()=>{dsec=dtg=null;clrDrop()});
 /* draggable decor: positions live in memory only, so a reload restores the originals */
 const off=(el,r)=>{let x=0,y=0;for(;el&&el!==r;el=el.offsetParent){x+=el.offsetLeft;y+=el.offsetTop}return[x,y]};
-function place(){const app=$('#app'),st=$('.stage');if(!st)return;const[ox,oy]=off(st,app),w=st.offsetWidth,h=st.offsetHeight;
- document.querySelectorAll('.dc').forEach(el=>{const k=el.dataset.k,p=pos[k],d=DC[k];
-  el.style.left=(p?Math.min(p.x,app.offsetWidth-10):ox+w*d.x/100)+'px';el.style.top=(p?Math.min(p.y,app.offsetHeight-10):oy+h*d.y/100)+'px'})}
+function place(){const app=$('#app'),st=$('.stage');if(!st)return;
+ const[,oy]=off(st,app),W=app.offsetWidth,h=st.offsetHeight,rw=Math.min(h*.68,innerWidth*.64,300),m=W*.035,iL=Math.max(W/2-rw/2-44,m+Math.min(90,W*.22)),iR=W-iL,oR=W-m;
+ document.querySelectorAll('.dc').forEach(el=>{const k=el.dataset.k,p=pos[k],d=DC[k],x=d.side==='L'?m+(iL-m)*d.u:oR-(oR-iR)*d.u,y=oy+h*(.02+.96*d.v);
+  el.style.display=(W<=900&&d.nm)||(W<=720&&d.u>.55)?'none':'';el.style.left=(p?Math.min(p.x,app.offsetWidth-10):x)+'px';el.style.top=(p?Math.min(p.y,app.offsetHeight-10):y)+'px'})}
 let drag=null,lp=null;
 function mv(){const a=$('#app').getBoundingClientRect(),x=Math.max(10,Math.min(a.width-10,lp.clientX-drag.dx-a.left)),y=Math.max(10,Math.min(a.height-10,lp.clientY-drag.dy-a.top));
  drag.el.style.left=x+'px';drag.el.style.top=y+'px';pos[drag.k]={x,y}}
