@@ -184,9 +184,16 @@ let canEdit=false,edit=false,api=null,assets=null;
 const PEND=Object.create(null);
 const tags=v=>String(v||'').split(',').map(t=>t.trim()).filter(Boolean);
 let fskill=null;const mt=x=>!fskill||tags(x.skills).some(t=>t.toLowerCase()===fskill);
-const curTheme=()=>document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
-try{const t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}
-const thmBtn=()=>`<button type="button" class="thm" data-thm aria-label="Light / dark" title="Light / dark">${curTheme()==='dark'?'☀':'☾'}</button>`;
+try {
+  const t = localStorage.getItem('theme');
+  document.documentElement.dataset.theme = (t === 'dark' || t === 'light') ? t : 'dark';
+} catch (e) {
+  document.documentElement.dataset.theme = 'dark';
+}
+
+const curTheme = () => document.documentElement.dataset.theme;
+
+const thmBtn = () => `<button type="button" class="thm" data-thm aria-label="Light / dark" title="Light / dark">${curTheme() === 'dark' ? '☀' : '☾'}</button>`;
 function fbar(s){const m=new Map();s.items.forEach(x=>tags(x.skills).forEach(t=>{if(!m.has(t.toLowerCase()))m.set(t.toLowerCase(),t)}));if(!m.size)return'';
  return `<div class="fbar rv"><span class="fl2">Filter by skill</span><button type="button" class="chip${fskill?'':' on'}" data-flt="">All</button>${[...m].map(([k,t])=>`<button type="button" class="chip${fskill===k?' on':''}" data-flt="${esc(k)}">${esc(t)}</button>`).join('')}</div>`}
 const noneMsg=s=>fskill&&!s.items.some(mt)?`<p class="none">No projects tagged “${esc(fskill)}” yet. <button type="button" class="btn g sm" data-flt="">Show all</button></p>`:'';
