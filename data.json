@@ -72,7 +72,7 @@
           "drive": "",
           "other": "",
           "icon": "🌻",
-          "theme": "butter"
+          "theme": "sky"
         },
         {
           "imgs": [
@@ -137,7 +137,7 @@
           "roles": "Fullstack Developer",
           "skills": "React, Redux, Axios, PostgreSQL, Java",
           "link": "",
-          "theme": "white",
+          "theme": "cherry",
           "icon": ""
         },
         {
@@ -229,7 +229,7 @@
           "brief": "MetroPT-3: AI-Based Operational Risk Early Warning System",
           "link": "",
           "desc": "- Developed a** two-stage AI pipeline** on 1.5M+ records, combining CNN-LSTM multi-horizon sensor forecasting with seven anomaly detection classifiers.\n- Achieved **0.998+ accuracy and 0.90+ macro F1** using Adaptive Random Forest, with performance evaluated across three forecast horizons.\n- Quantified the economic impact of missed failures and false alarms for HCMC Metro Line 1, estimating **USD 1.7K–6.9K** in net benefits across evaluated scenarios.",
-          "theme": "sky",
+          "theme": "cotton",
           "icon": "⭐"
         },
         {
