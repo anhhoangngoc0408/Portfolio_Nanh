@@ -1,0 +1,119 @@
+{
+  "profile": {
+    "name": "Ngọc Ánh",
+    "role": "Business Analyst · Web Developer · Automation Tester",
+    "tagline": "I bridge business needs and digital products: clear analysis, clean builds, careful testing.",
+    "about": "I work at the intersection of **business analysis**, *web development* and test automation. I love turning vague requirements into products that run smoothly and are easy to use.",
+    "email": "hello@example.com",
+    "photo": "",
+    "marquee": "Business Analyst · Web Developer · Automation Tester · Flowers · Food · Billiards · Tech",
+    "marqueeSpeed": 30,
+    "links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://linkedin.com"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "Skills",
+      "items": [
+        {
+          "title": "Business Analysis",
+          "desc": "Requirements analysis, User Stories, BPMN, SQL, Jira"
+        },
+        {
+          "title": "Web Development",
+          "desc": "HTML/CSS, JavaScript, React, REST API"
+        },
+        {
+          "title": "Automation Test",
+          "desc": "Selenium, Playwright, Postman, CI/CD"
+        }
+      ]
+    },
+    {
+      "id": "experience",
+      "type": "experience",
+      "title": "Experience",
+      "items": [
+        {
+          "title": "Business Analyst",
+          "sub": "ABC Company · 2023 – Present",
+          "brief": "Analysed and documented a sales management system.",
+          "desc": "Analysed requirements and wrote documentation for a **sales management system**.\n- Worked with 3 dev and QA teams\n- *Cut requirement sign-off time by 30%*",
+          "imgs": []
+        }
+      ]
+    },
+    {
+      "id": "projects",
+      "type": "projects",
+      "title": "Projects",
+      "cats": [
+        "Business Analyst",
+        "Website Development",
+        "Automation Test"
+      ],
+      "items": [
+        {
+          "cat": "Business Analyst",
+          "title": "Order Management System",
+          "sub": "2025",
+          "brief": "End-to-end analysis of the ordering workflow.",
+          "desc": "Analysed the full ordering process, designed the business flows and wrote the **SRS** documentation.\n\nResult: *noticeably shorter order-processing time*.",
+          "imgs": [],
+          "github": "",
+          "website": "",
+          "drive": "",
+          "other": ""
+        },
+        {
+          "cat": "Website Development",
+          "title": "Coffee Brand Website",
+          "sub": "2025",
+          "brief": "A fast, mobile-first brand website.",
+          "desc": "Designed and built a brand website, optimised for speed and mobile display.",
+          "imgs": [],
+          "github": "",
+          "website": "",
+          "drive": "",
+          "other": ""
+        },
+        {
+          "cat": "Automation Test",
+          "title": "E-commerce Regression Suite",
+          "sub": "2024",
+          "brief": "Automated regression tests on every deploy.",
+          "desc": "Built a **regression test** suite that runs automatically on every deployment.",
+          "imgs": [],
+          "github": "",
+          "website": "",
+          "drive": "",
+          "other": ""
+        }
+      ]
+    },
+    {
+      "id": "certificates",
+      "type": "certificates",
+      "title": "Certificates",
+      "items": [
+        {
+          "title": "ISTQB Foundation Level",
+          "sub": "ISTQB · 2024",
+          "brief": "International software testing certification.",
+          "desc": "International certification in software testing fundamentals.",
+          "imgs": []
+        }
+      ]
+    }
+  ]
+}
