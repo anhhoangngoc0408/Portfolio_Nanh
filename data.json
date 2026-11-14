@@ -1,9 +1,9 @@
 {
   "profile": {
     "name": "Ngọc Ánh",
-    "role": "BUSINESS ANALYST · WEB DEVELOPER",
+    "role": "BUSINESS ANALYST · ENGINEERING",
     "tagline": "Just a girl with too many tabs open 👧🏻",
-    "about": "I work at the intersection of **business analysis**, *web development*. I love turning vague requirements into products that run smoothly and are easy to use.",
+    "about": "I work at the intersection of **business analysis**, *Engineering*. I love turning vague requirements into products that run smoothly and are easy to use.",
     "email": "anhhoangngoc0408@gmail.com",
     "photo": "images/mwg6xkdelxqp.jpg",
     "marquee": "Business Analyst · Web Developer · Machine Learning · Deep Learning",
@@ -98,11 +98,12 @@
       "type": "projects",
       "title": "Projects",
       "cats": [
-        "My recent project"
+        "My recent projects",
+        "My recent projects"
       ],
       "items": [
         {
-          "cat": "My recent project",
+          "cat": "My recent projects",
           "title": "AeroVista: Aviation Decision Support System",
           "sub": "Oct 2026",
           "brief": "Defined KPIs (OTP, cancellation rate, PLF, RASK, yield, turnaround) and built a 6-page Streamlit dashboard answering 3 business questions.",
@@ -117,10 +118,11 @@
           "roles": "Business Analyst, Fullstack Developers",
           "skills": "MySQL, Python, Streamlit, ETL",
           "link": "https://aerovista-aviation.streamlit.app/",
-          "theme": "white"
+          "theme": "sky",
+          "icon": "💡"
         },
         {
-          "cat": "My recent project",
+          "cat": "My recent projects",
           "title": "Digital Green Eligibility Checker",
           "sub": "NAB Innovation Project - Oct 2026",
           "brief": "",
@@ -135,10 +137,11 @@
           "roles": "Fullstack Developer",
           "skills": "React, Redux, Axios, PostgreSQL, Java",
           "link": "",
-          "theme": "cherry"
+          "theme": "white",
+          "icon": ""
         },
         {
-          "cat": "My recent project",
+          "cat": "My recent projects",
           "imgs": [
             "images/mwgezx1aianr.jpg",
             "images/mwgf6e2t10kq.jpg",
@@ -157,6 +160,29 @@
           "drive": "",
           "other": "",
           "icon": "📈",
+          "theme": "white"
+        },
+        {
+          "imgs": [
+            "images/mwghbm3rrdla.jpg",
+            "images/mwghbqeke4ip.jpg",
+            "images/mwghbt86sxtk.jpg",
+            "images/mwghbvzrs51p.jpg",
+            "images/mwghbystcn9l.jpg",
+            "images/mwghc1t1kx3m.jpg"
+          ],
+          "cat": "My recent projects",
+          "title": "Supply Chain Traceability Platform",
+          "sub": "March 2026",
+          "brief": "",
+          "roles": "Fullstack Developer",
+          "skills": "JavaScript, Node.js, Solidity, Web3.js, Supabase",
+          "link": "",
+          "desc": "- Designed** 4-layer architecture**: Smart Contract → Integration Layer (Ethers.js/TypeChain) → Backend API (Node.js) → Database (Supabase).\n- Built a fullstack app: **HTML/CSS, Node.js APIs**, *Solidity smart contracts *applied.\n- Implemented** backend APIs for authentication and transaction** workflows.\n- Integrated **MetaMask** for wallet-based authentication.",
+          "github": "",
+          "website": "",
+          "drive": "",
+          "other": "",
           "theme": "white"
         }
       ]
@@ -191,14 +217,31 @@
         },
         {
           "imgs": [
-            "images/mwgfxwprvixx.jpg"
+            "images/mwgfxwprvixx.jpg",
+            "images/mwgglkiacu66.jpg"
+          ],
+          "caps": [
+            "",
+            "The results"
           ],
           "title": "Second Prize, 11th National Student Scientific Research Competition on Econometrics and Applications (2026)",
           "sub": "Jun 2026",
           "brief": "MetroPT-3: AI-Based Operational Risk Early Warning System",
           "link": "",
           "desc": "- Developed a** two-stage AI pipeline** on 1.5M+ records, combining CNN-LSTM multi-horizon sensor forecasting with seven anomaly detection classifiers.\n- Achieved **0.998+ accuracy and 0.90+ macro F1** using Adaptive Random Forest, with performance evaluated across three forecast horizons.\n- Quantified the economic impact of missed failures and false alarms for HCMC Metro Line 1, estimating **USD 1.7K–6.9K** in net benefits across evaluated scenarios.",
-          "theme": "sky"
+          "theme": "sky",
+          "icon": "⭐"
+        },
+        {
+          "imgs": [
+            "images/mwggzq1sembv.jpg"
+          ],
+          "title": "Top 16 Heading for the Future Project: Data Analysis (South Region)",
+          "sub": "AIESEC - 2024",
+          "brief": " Delivered actionable insights through dashboards and visual analysis, supporting data-driven recommendations.",
+          "link": "",
+          "desc": "- Cleaned and validated datasets across 3 domains (sales, customers, employees), resolving **100% identified inconsistencies by Excel**.\n- **Analyzed performance and customer behavior **using metrics, uncovering key operational and behavioral insights.\n- Delivered **actionable insights** through dashboards and visual analysis, supporting data-driven recommendations.",
+          "theme": "white"
         }
       ]
     }
